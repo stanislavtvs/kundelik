@@ -25,7 +25,7 @@ body {
     color: #fff;
     text-align: center;
 }
-.predmet-block {
+.predmet-block,.block_schedulespredmet {
     display: none;
 }
 .content {
@@ -59,8 +59,46 @@ body {
     margin-left: -1px;
     font-family: 'Oswald', sans-serif;
 }
-.block-predmet-content {
+.block-predmet-content,.block_schedulespredmet_content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height: 739px;
+    overflow-y: scroll;
+}
+.block_navigator_schedules {
+    width: 472px;
+    border-radius: 10px;
+    border: 2px solid #E1E1E1;
+    margin: 10px;
+    background: #202020;
+}
+.block_navigator_schedules_ponel_center_end {
+    display: grid;
+    align-items: end;
+    border-radius: 10px;
+}
+.block_navigator_ponel_text {
+    background: #282828;
+    color: #E1E1E1;
+    margin: 0px;
+    width: 101%;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: -1px;
+}
+.ubd_butt_schedulestitle {
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.ubd_butt_schedulestitle h3 {
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+}
+.block_navigator_ponel_text_predmet {
+    color: #E1E1E1;
+    text-align: center;
 }
