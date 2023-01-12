@@ -2,6 +2,7 @@ function allcloseblock() {
     document.getElementById("predmet_block").style.display = "none";
     document.getElementById("block_schedulespredmet").style.display = "none";
     document.getElementById("block_classmates").style.display = "none";
+    document.getElementById("block_teachers").style.display = "none";
 }
 function predmeticlick() {
     allcloseblock();
@@ -19,6 +20,12 @@ function Classmatesclick() {
     document.getElementById("block_classmates").style.display = "block";
     detectuser_py();
 }
+function Teachersclick() {
+    document.getElementById("block_teachers_content").innerHTML = "";
+    allcloseblock();
+    document.getElementById("block_teachers").style.display = "block";
+   detectteach_py();
+}
 async function detectpredmet(login) {
     await eel.detectpredmet(login);
 }
@@ -27,6 +34,9 @@ async function detectschedules() {
 }
 async function detectuser_py() {
     await eel.detectuser_py();
+}
+async function detectteach_py() {
+    await eel.detectteach_py();
 }
 eel.expose(detectpredmetout);
 function detectpredmetout(text) {
@@ -62,5 +72,12 @@ function detectuser_js(text) {
         textp = "<div class='classmates_list_block'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
         document.getElementById("block_classmates_content").innerHTML += textp;
         //console.log(text[index])
+    }
+}
+eel.expose(detectteach_js);
+function detectteach_js(text) {
+    for (let index = 0; index < text.length; index++) {
+        textp = "<div class='classmates_list_block'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
+        document.getElementById("block_teachers_content").innerHTML += textp;
     }
 }
