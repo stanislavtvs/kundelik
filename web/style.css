@@ -22,9 +22,11 @@ body {
     cursor: pointer;
 }
 .predmet-block-title {
-    display: none;
     color: #fff;
     text-align: center;
+}
+.predmet-block {
+    display: none;
 }
 .content {
     width: 100%;
@@ -58,7 +60,7 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 .block-predmet-content {
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
