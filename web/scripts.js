@@ -1,0 +1,3 @@
+for (let index = 0; index < 16; index++) {
+    document.getElementById("block_predmet_content").innerHTML += '<div class="block_navigator" style="background-image: url(img/pimg/Алгебраинач.ан..jpg);" img="img/pimg/Алгебраинач.ан..jpg" title="Алгебра и нач. ан." idpost="1" onclick="predmet_ponel_click(this)"><div class="block_navigator_ponel_center_end"><p class="block_navigator_ponel_text">Алгебра и нач. ан.</p></div></div>'
+}

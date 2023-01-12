@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="img/pimg/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <title id="title">Дневник</title>
+</head>
+<body>
+    <div class="block_bleck_" id="block_bleck_" onclick="block_bleck_();"></div>
+    <div class="content" id="content">
+        <header class="header" id="header">
+            <div class="account_block" id="account_block">
+                <img class="logo_account_block" src="img/logo.png" alt="logo">
+                <h5 class="name_account_block" id="name_account_block">Стас кириченко</h5>
+            </div>
+            <div class="naz_block" id="naz_block" onclick="nazblockclick(this)">
+                <img src="img/sleft.svg" alt="sleft">
+                <p>Назад</p>
+            </div>
+            <img src="img/exit.svg" alt="" class="exit_butt">
+        </header>
+        <div class="block_navigator_ponel" id="block_navigator">
+            <div class="block_navigator" style="background-image: url('img/predmeti.jpg');" onclick="predmeticlick();">
+                <div class="block_navigator_ponel_center_end">
+                    <p class="block_navigator_ponel_text">Предметы</p>
+                </div>
+            </div>
+            <div class="block_navigator" style="background-image: url('img/schedules.png');" onclick="Schedulesclick();">
+                <div class="block_navigator_ponel_center_end">
+                    <p class="block_navigator_ponel_text">Росписания</p>
+                </div>
+            </div>
+            <div class="block_navigator" style="background-image: url('img/Classmates.jpg');" onclick="Classmatesclick();">
+                <div class="block_navigator_ponel_center_end">
+                    <p class="block_navigator_ponel_text">Одноклассники</p>
+                </div>
+            </div>
+            <div class="block_navigator" style="background-image: url('img/teachers.jpg');" onclick="Teachersclick();">
+                <div class="block_navigator_ponel_center_end">
+                    <p class="block_navigator_ponel_text">Учителя</p>
+                </div>
+            </div>
+            <div class="block_navigator" style="background-image: url('img/homework.jpg');" onclick="Homework();">
+                <div class="block_navigator_ponel_center_end">
+                    <p class="block_navigator_ponel_text">Домашнее работы</p>
+                </div>
+            </div>
+        </div>
+        <div class="block_pridmet" id="block_pridmet" style="display: none;">
+            <h2 class="block_pridmet_text">Мои предметы</h2>
+            <hr>
+        <div class="block_navigator_ponel" id="block_predmet">
+
+        </div>
+    </div>
+    <div class="block_schedulespredmet" id="block_schedulespredmet" style="display: none;">
+        <div class="block_ubd_schedulestitle_" id="block_ubd_schedulestitle_">
+            <div class="block_ubd_schedulestitle_list">
+                <h2>Каз.яз</h2>
+                <h3>✖</h3>
+            </div>
+        </div>
+        <h2 class="block_pridmet_text">Росписания</h2>
+        <hr>
+    <div class="block_navigator_ponel" id="block_navigator_schedules">
+       
+    </div>
+</div>
+<div class="block_classmates" id="block_classmates">
+    <h2 class="block_pridmet_text">Одноклассники</h2>
+    <h3 class="butt_ubd_p" onclick="butt_classmates_click_py();" id="butt_classmates_click_py">Обновить</h3>
+    <hr>
+    <div class="block_classmates_list" id="block_classmates_list">
+    </div>
+</div>
+<div class="block_teachers" id="block_teachers">
+    <h2 class="block_pridmet_text">Учителя</h2>
+    <h3 class="butt_ubd_p" onclick="butt_teachers_click_py();" id="butt_teachers_click_py">Обновить</h3>
+    <hr>
+    <div class="block_teachers_list" id="block_teachers_list">
+    </div>
+</div>
+    <div class="block_homework" id="block_homework" style="display: none;">
+        <div class="block_ubd_schedulestitle_" id="block_homework_click">
+            <input placeholder='Дата' class='input' id='homework_input_data' type="date">
+            <input placeholder='Задания' class='input' id='homework_input_text'>
+            <select class="input" id="homework_input_items">
+                
+            </select>
+            <h3 class='butt' id='add_schedulestitle_butt' onclick='add_homework_click(this);'>Добавить</h3><hr>
+        </div>
+        <h2 class="block_pridmet_text">Доммашняя работа</h2>
+        <h3 class="butt_ubd_p" onclick="block_homework_click();" id="butt_classmates_click_py">Добавить +</h3>
+        <hr>
+    <div class="block_navigator_homework" id="block_navigator_homework">
+    <table>
+        <tbody id="table_homework">
+
+        </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="navigat_predmet_ponel" id="navigat_predmet_ponel" style="display: none;">
+        <h2 class="navigat_predmet_ponel_title" id="navigat_predmet_ponel_title"></h2>
+        <hr>
+        <div class="navigat_predmet_ponel_block">
+            <div class="navigat_predmet_ponel_block_o1" id="navigat_predmet_ponel_block_o1">
+                <p>Оценки за четверть</p>
+            </div>
+            <div class="navigat_predmet_ponel_block_o2" id="navigat_predmet_ponel_block_o2">
+                <p>Оценки за урок</p>
+            </div>
+            <div class="navigat_predmet_ponel_block_o3" id="navigat_predmet_ponel_block_o3">
+                <p>Домашняя работа</p>
+            </div>
+        </div>
+    </div>
+    <div class="itog_evel_table" id="itog_evel_table" style="display: none;">
+        <table>
+            <tbody id="itog_evel_table_tbody">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="evel_evel_table" id="evel_evel_table" style="display: none;">
+        <table>
+            <tbody id="evel_evel_table_tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="homework_block_predmet" id="homework_block_predmet" style="display: none;">
+        <div class="block_ubd_schedulestitle_" id="block_homework_click_predmet">
+            <input placeholder='Дата' class='input' id='homework_input_data_predmet' type="date">
+            <input placeholder='Задания' class='input' id='homework_input_text_predmet'>
+            <h3 class='butt' id='add_schedulestitle_butt' onclick='add_homework_predmet_click(this);'>Добавить</h3><hr>
+        </div>
+        <h2 class="block_pridmet_text">Доммашняя работа</h2>
+        <h3 class="butt_ubd_p" onclick="block_homework_predmet_click(this);" id="butt_classmates_click_py_predmet">Добавить +</h3>
+        <hr>
+    <div class="block_navigator_homework_predmet" id="block_navigator_homework_predmet">
+    <table>
+        <tbody id="table_homework_predmet">
+
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <div class="logo_block" id="logo_block">
+        <img src="img/logo-user.png" alt="logo-user" class="logo_block_img">
+        <input type="text" class="input logo_block_input" id="logo_block_input_login" placeholder="Логин">
+        <input type="text" class="input" id="logo_block_input_password" placeholder="Пароль">
+        <div class="butt" style="text-align: center;" onclick="login_fun();">Вход</div>
+        <p id="status_text_"></p>
+    </div>
+</body>
+<script src="eel.js"></script>
+<script src="scripts.js"></script>
+</html>

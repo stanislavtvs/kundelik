@@ -1,0 +1,331 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Oswald', sans-serif;
+    background-color: #191919;
+}
+.header {
+    background: #282828;
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #E1E1E1;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0px 0px 10px 10px;
+    border-left: 2px solid #E1E1E1;
+    border-right: 2px solid #E1E1E1;
+    border-bottom: 2px solid #E1E1E1;
+}
+.account_block {
+    align-items: center;
+    align-self: center;
+    display: flex;
+    margin-left: 10px;
+}
+.logo_account_block {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    border-radius: 50%;
+    border: 3px solid #E1E1E1;
+}
+.name_account_block {
+    color: #E1E1E1;
+    font-family: 'Oswald', sans-serif;
+    margin-left: 5px;
+}
+.exit_butt {
+    width: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.block_navigator {
+    width: 250px;
+    height: 225px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 3px solid #191919;
+    margin: 10px;
+    background-size: cover;
+    background-position: unset;
+    background-repeat: no-repeat;
+}
+.block_navigator_schedules {
+    width: 472px;
+    border-radius: 10px;
+    border: 2px solid #E1E1E1;
+    margin: 10px;
+    background: #202020;
+}
+.block_navigator_ponel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.block_navigator_ponel_center_end {
+    display: grid;
+    align-items: end;
+    height: 226px;
+    border-radius: 10px;
+}
+.block_navigator_schedules_ponel_center_end {
+    display: grid;
+    align-items: end;
+    border-radius: 10px;
+}
+.block_navigator_ponel_text {
+    background: #282828;
+    color: #E1E1E1;
+    margin: 0px;
+    width: 101%;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: -1px;
+}
+.naz_block {
+    padding-left: 15px;
+    padding-right: 35px;
+    background: #191919;
+    border-radius: 0px 0px 0px 8px;
+    /*border-right: 2px solid #E1E1E1;*/
+    cursor: pointer;
+    display: none;/*flex*/
+}
+.naz_block img  {
+    width: 15px;
+}
+.naz_block p {
+    margin-left: 10px;
+}
+.block_pridmet_text {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    color: #E1E1E1;
+}
+.schedulestitle_block {
+    width: 472px;
+
+}
+.block_navigator_ponel_text_predmet {
+    color: #E1E1E1;
+    text-align: center;
+}
+.ubd_schedulestitle_block_click {
+    text-align: center;
+    color: #E1E1E1;
+    width: 300px;
+    background: #191919;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 2px solid #E1E1E1;
+    cursor: pointer;
+}
+.block_ubd_schedulestitle_ {
+    width: 50%;
+/*    height: 500px;**/
+    position: fixed;
+    background: #191919;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: auto;
+    text-align: center;
+    display: none;
+    border-radius: 10px;
+    border: 2px solid #E1E1E1;
+}
+.block_ubd_schedulestitle_list {
+    height: 36px;
+    background: #E1E1E1;
+    color: #191919;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.block_ubd_schedulestitle_list h2 {
+    margin: 0 auto;
+    font-size: smaller;
+}
+.block_ubd_schedulestitle_list h3 {
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: smaller;
+}
+.block_bleck_ {
+    left: 0px;
+    top: 0px;
+    position: fixed;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    display: none;
+}
+.ubd_butt_schedulestitle {
+    font-size: 14px;
+    padding: 3px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.ubd_butt_schedulestitle h3 {
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+}
+.butt {
+    width: 200px;
+    background: #191919;
+    padding: 5px;
+    border-radius: 10px;
+    color: #E1E1E1;
+    margin: 0 auto;
+    margin-top: 25px;
+    border: 2px solid #E1E1E1;
+    cursor: pointer;
+}
+.input {
+    width: 100%;
+    border-radius: 10px;
+    height: 25px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #191919;
+    border: none;
+}
+.block_classmates,.block_teachers {
+    display: none;
+}
+.block_classmates_list,.block_teachers_list {
+    margin-top: 65px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.classmates_list_block {
+    width: 277px;
+    border: 2px solid #E1E1E1;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.classmates_list_block img {
+    width: 64px;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 20px; 
+}
+.classmates_list_block p {
+    color: #E1E1E1;
+    text-align: center;
+    margin-top: 50px;
+}
+.butt_ubd_p {
+    color: #191919;
+    text-align: center;
+    background: #E1E1E1;
+    width: 150px;
+    height: 32px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 10px;
+}
+table, th, td {
+    border: 1px solid #E1E1E1;
+    border-collapse: collapse;
+    color: #E1E1E1;
+  }
+table {
+    width: 100%;
+}
+td {
+    padding: 10px;
+}
+.navigat_predmet_ponel {
+    color: #E1E1E1;
+    text-align: center;
+}
+.navigat_predmet_ponel_block {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+.navigat_predmet_ponel_block_o1 {
+    width: 250px;
+    height: 225px;
+    border: 2px solid #E1E1E1;
+    border-radius: 10px;
+    background-image: url(img/o1.svg);
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-position: center;
+    cursor: pointer;
+}
+.navigat_predmet_ponel_block_o1 p {
+    margin-top: 185px;
+}
+.navigat_predmet_ponel_block_o2 {
+    width: 250px;
+    height: 225px;
+    border: 2px solid #E1E1E1;
+    border-radius: 10px;
+    background-image: url(img/o2.svg);
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-position: center;
+    cursor: pointer;
+}
+.navigat_predmet_ponel_block_o2 p {
+    margin-top: 185px;
+}
+.navigat_predmet_ponel_block_o3 {
+    width: 250px;
+    height: 225px;
+    border: 2px solid #E1E1E1;
+    border-radius: 10px;
+    background-image: url(img/o3.svg);
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-position: center;
+    cursor: pointer;
+}
+.navigat_predmet_ponel_block_o3 p {
+    margin-top: 185px;
+}
+.logo_block {
+    justify-content: center;
+    display: none;
+    margin-top: 260px;
+}
+.logo_block_img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 2px solid #fff;
+}
+.logo_block_input {
+    display: block;
+    margin-top: 25px;
+}
+#status_text_ {
+    color: red;
+    text-align: center;
+}
+@media (max-width: 515px) {
+    .block_navigator_homework,.itog_evel_table,.evel_evel_table,.block_navigator_homework_predmet {
+        overflow-x: scroll;
+    }
+}
