@@ -5,6 +5,12 @@ function allcloseblock() {
     document.getElementById("block_teachers").style.display = "none";
     document.getElementById("block_homework").style.display = "none";
 }
+function block_bleck_() {
+    //document.getElementById("block_ubd_schedulestitle_").style.display = "none";
+    document.getElementById("block_bleck_").style.display = "none";
+    document.getElementById("block_homework_click").style.display = "none";
+    //document.getElementById("block_homework_click_predmet").style.display = "none";
+}
 function predmeticlick() {
     allcloseblock();
     document.getElementById("predmet_block").style.display = "block";
@@ -32,6 +38,14 @@ function Homework() {
     document.getElementById("block_homework").style.display = "block";
     detecthomework();
 }
+async function butt_classmates_click_py() {
+    document.getElementById("butt_classmates_click_py").innerHTML = "Загрузка...";
+    await eel.butt_classmates_click_py();
+}
+async function butt_teachers_click_py() {
+    document.getElementById("butt_teachers_click_py").innerHTML = "Загрузка...";
+    await eel.butt_teachers_click_py();
+}
 async function detectpredmet(login) {
     await eel.detectpredmet(login);
 }
@@ -46,6 +60,25 @@ async function detectteach_py() {
 }
 async function detecthomework() {
     await eel.detecthomework();
+}
+async function goodhomework_click(id) {
+    await eel.goodhomework_click_py(id);
+}
+async function delethomework_click(id) {
+    await eel.delethomework_click(id);
+}
+async function block_homework_click() {
+    await eel.ubd_homework_click();
+
+    document.getElementById("block_bleck_").style.display = "block";
+    document.getElementById("block_homework_click").style.display = "block";
+}
+async function add_homework_click() {
+    data = document.getElementById("homework_input_data").value;
+    text = document.getElementById("homework_input_text").value;
+    items = document.getElementById("homework_input_items").value;
+
+    await eel.add_homework_click(data,text,items,'stanislavkirichenko');
 }
 eel.expose(detectpredmetout);
 function detectpredmetout(text) {
@@ -109,4 +142,48 @@ function detecthomework_js(text) {
         document.getElementById("table_homework").innerHTML += textp;
         //console.log(text[index])
     }
+}
+eel.expose(goodhomework_click_js);
+function goodhomework_click_js(text) {
+    document.getElementById("table_homework").innerHTML = "";
+    //document.getElementById("block_homework_click").style.display = "none";
+    //document.getElementById("block_bleck_").style.display = "none";
+    Homework();
+}
+eel.expose(goodhomework_click_js);
+function goodhomework_click_js(text) {
+    document.getElementById("table_homework").innerHTML = "";
+    //document.getElementById("block_homework_click").style.display = "none";
+    //document.getElementById("block_bleck_").style.display = "none";
+    Homework();
+}
+eel.expose(butt_teachers_click_js);
+function butt_teachers_click_js(text) {
+    if (text == "good") {
+        document.getElementById("butt_teachers_click_py").innerHTML = "Успех!";
+        Teachersclick();
+        document.getElementById("butt_teachers_click_py").innerHTML = "Обновить";
+    }
+}
+eel.expose(butt_classmates_click_js);
+function butt_classmates_click_js(text) {
+    if (text == "good") {
+        document.getElementById("butt_classmates_click_py").innerHTML = "Успех!";
+        Classmatesclick();
+        document.getElementById("butt_classmates_click_py").innerHTML = "Обновить";
+    }
+}
+eel.expose(ubd_homework_click_js);
+function ubd_homework_click_js(text) {
+    document.getElementById("homework_input_items").innerHTML = ""
+    for (let index = 0; index < text.length; index++) {
+        document.getElementById("homework_input_items").innerHTML += "<option value="+text[index]['id']+">"+text[index]['title']+"</option>"
+    }
+}
+eel.expose(goodhomework_click_js);
+function goodhomework_click_js(text) {
+    document.getElementById("table_homework").innerHTML = "";
+    document.getElementById("block_homework_click").style.display = "none";
+    document.getElementById("block_bleck_").style.display = "none";
+    Homework();
 }

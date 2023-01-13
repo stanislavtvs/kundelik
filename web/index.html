@@ -11,6 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <div class="block_bleck_" id="block_bleck_" onclick="block_bleck_();"></div>
     <div class="wrapper">
         <header class="header">
             <div class="block_book" onclick="predmeticlick();">
@@ -56,16 +57,27 @@
             </div>
             <div class="block_classmates" id="block_classmates">
                 <h1 class="predmet-block-title">Одноклассники</h1>
+                <h3 class="butt_ubd_p" onclick="butt_classmates_click_py();" id="butt_classmates_click_py">Обновить</h3>
                 <hr>
                 <div class="block_classmates_content" id="block_classmates_content"></div>
             </div>
             <div class="block_teachers" id="block_teachers">
                 <h1 class="predmet-block-title">Учителя</h1>
+                <h3 class="butt_ubd_p" onclick="butt_teachers_click_py();" id="butt_teachers_click_py">Обновить</h3>
                 <hr>
                 <div class="block_teachers_content" id="block_teachers_content"></div>
             </div>
             <div class="block_homework" id="block_homework">
+                <div class="block_ubd_schedulestitle_" id="block_homework_click">
+                    <input placeholder='Дата' class='input' id='homework_input_data' type="date">
+                    <input placeholder='Задания' class='input' id='homework_input_text'>
+                    <select class="input" id="homework_input_items">
+                        
+                    </select>
+                    <h3 class='butt' id='add_schedulestitle_butt' onclick='add_homework_click(this);'>Добавить</h3><hr>
+                </div>
                 <h1 class="predmet-block-title">Домашняя работа</h1>
+                <h3 class="butt_ubd_p" onclick="block_homework_click();" id="butt_classmates_click_py">Добавить +</h3>
                 <hr>
                 <div class="block_homework_content" id="block_homework_content">
                     <table>
