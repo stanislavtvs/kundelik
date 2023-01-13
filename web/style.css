@@ -13,8 +13,8 @@ body {
     height: 100vh;
 }
 .header img {
-    width: 64px;
-    height: 64px;
+    width: 32px;
+    height: 32px;
     display: block;
     margin: 0 auto;
     margin-top: 20px;
@@ -25,7 +25,7 @@ body {
     color: #fff;
     text-align: center;
 }
-.predmet-block,.block_schedulespredmet,.block_classmates,.block_teachers {
+.predmet-block,.block_schedulespredmet,.block_classmates,.block_teachers,.block_homework {
     display: none;
 }
 .content {
@@ -63,6 +63,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height: 739px;
+    overflow-y: scroll;
+}
+.block_homework_content {
+    display: block;
     height: 739px;
     overflow-y: scroll;
 }
@@ -122,4 +127,23 @@ body {
     color: #E1E1E1;
     text-align: center;
     margin-top: 50px;
+}
+table, th, td {
+    border: 1px solid #E1E1E1;
+    border-collapse: collapse;
+    color: #E1E1E1;
+  }
+table {
+    width: 100%;
+}
+td {
+    padding: 10px;
+}
+.title_menu {
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+}
+.block_book,.block_list,.block_people,.block_teacher,.block_homeworks {
+    cursor: pointer;
 }

@@ -3,6 +3,7 @@ function allcloseblock() {
     document.getElementById("block_schedulespredmet").style.display = "none";
     document.getElementById("block_classmates").style.display = "none";
     document.getElementById("block_teachers").style.display = "none";
+    document.getElementById("block_homework").style.display = "none";
 }
 function predmeticlick() {
     allcloseblock();
@@ -26,6 +27,11 @@ function Teachersclick() {
     document.getElementById("block_teachers").style.display = "block";
    detectteach_py();
 }
+function Homework() {
+    allcloseblock(); 
+    document.getElementById("block_homework").style.display = "block";
+    detecthomework();
+}
 async function detectpredmet(login) {
     await eel.detectpredmet(login);
 }
@@ -37,6 +43,9 @@ async function detectuser_py() {
 }
 async function detectteach_py() {
     await eel.detectteach_py();
+}
+async function detecthomework() {
+    await eel.detecthomework();
 }
 eel.expose(detectpredmetout);
 function detectpredmetout(text) {
@@ -79,5 +88,25 @@ function detectteach_js(text) {
     for (let index = 0; index < text.length; index++) {
         textp = "<div class='classmates_list_block'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
         document.getElementById("block_teachers_content").innerHTML += textp;
+    }
+}
+eel.expose(detecthomework_js);
+function detecthomework_js(text) {
+    document.getElementById("table_homework").innerHTML = "";
+    var status = ""
+    title = "<tr><th>Дата</th><th>Задания</th><th>Предметы</th><th>Статус</th></tr>"
+    textp = title
+    document.getElementById("table_homework").innerHTML = textp;
+    for (let index = 0; index < text.length; index++) {
+        if (text[index]['status'] == "True") {
+            status = "Выполнено"
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='delethomework_click("+text[index]['id']+")'>Удалить</td><td></td></tr>";
+        }
+        else if (text[index]['status'] == "False") {
+            status = "Не выполнено"
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='goodhomework_click("+text[index]['id']+")'>Выполнить</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='delethomework_click("+text[index]['id']+")'>Удалить</td></tr>";
+        }
+        document.getElementById("table_homework").innerHTML += textp;
+        //console.log(text[index])
     }
 }
