@@ -6,7 +6,7 @@ function allcloseblock() {
     document.getElementById("block_homework").style.display = "none";
 }
 function block_bleck_() {
-    //document.getElementById("block_ubd_schedulestitle_").style.display = "none";
+    document.getElementById("block_ubd_schedulestitle_").style.display = "none";
     document.getElementById("block_bleck_").style.display = "none";
     document.getElementById("block_homework_click").style.display = "none";
     //document.getElementById("block_homework_click_predmet").style.display = "none";
@@ -186,4 +186,69 @@ function goodhomework_click_js(text) {
     document.getElementById("block_homework_click").style.display = "none";
     document.getElementById("block_bleck_").style.display = "none";
     Homework();
+}
+function ubd_butt_schedulestitle (a) {
+    var id = a.getAttribute("id");
+    ubd_butt_schedulestitle_py(id);
+}
+async function ubd_butt_schedulestitle_py(id) {
+    await eel.ubd_butt_schedulestitle_py(id);
+}
+eel.expose(ubd_butt_schedulestitle_js);
+function ubd_butt_schedulestitle_js(text) {
+    document.getElementById("block_ubd_schedulestitle_").style.display = "block";
+    document.getElementById("block_bleck_").style.display = "block";
+    document.getElementById("block_ubd_schedulestitle_").innerHTML = "";
+    //console.log(text.length)
+    //console.log(text)
+    for (let index = 0; index < text.length; index++) {
+        pred = text[index]['pridmet'];
+        predd = text[index]['id'];
+        idp = text[index]['idp'];
+        if (predd == "") {
+            document.getElementById("block_ubd_schedulestitle_").innerHTML += "";
+            textp = "<input placeholder='Заголовок' class='input' id='add_schedulestitle_input'><h3 class='butt' id='add_schedulestitle_butt' onclick='add_schedulestitle_butt(this);'>Добавить</h3><hr>";
+            document.getElementById("block_ubd_schedulestitle_").innerHTML += textp;
+            document.getElementById("add_schedulestitle_input").setAttribute("idp",idp);
+        }
+        else {
+        textp = "";
+        for (let predi = 0; predi < pred.length; predi++) {
+            id = predd[predi]
+            //textp += "<p class='block_navigator_ponel_text_predmet'>"+l+" . "+pred[predi]+"</p>";
+            textp += "<div class='block_ubd_schedulestitle_list'><h2>"+pred[predi]+"</h2><h3 id="+id+" onclick='delschedulestitlefun(this)'>✖</h3></div>";
+        }
+        inp = "<input placeholder='Заголовок' class='input' id='add_schedulestitle_input'><h3 class='butt' id='add_schedulestitle_butt' onclick='add_schedulestitle_butt(this);'>Добавить</h3><hr>"
+        textp = inp + textp; 
+        document.getElementById("block_ubd_schedulestitle_").innerHTML += textp;
+        document.getElementById("add_schedulestitle_input").setAttribute("idp",idp);
+    }
+    }
+}
+function add_schedulestitle_butt(a) {
+    text = document.getElementById("add_schedulestitle_input").value;
+    idp = document.getElementById("add_schedulestitle_input").getAttribute("idp");
+    add_schedulestitle_butt_py(idp,text);
+}
+async function add_schedulestitle_butt_py(idp,text) {
+    await eel.add_schedulestitle_butt_py(idp,text);
+}
+eel.expose(add_schedulestitle_butt_js);
+function add_schedulestitle_butt_js(text) {
+    ubd_butt_schedulestitle_py(text)
+    Schedulesclick();
+}
+function delschedulestitlefun(a) {
+    id = a.getAttribute("id");
+    delschedulestitlefun_py(id);
+}
+async function delschedulestitlefun_py(id) {
+    await eel.delschedulestitlefun_py(id);
+}
+eel.expose(delschedulestitlefun_js);
+function delschedulestitlefun_js(text) {
+    if (text != "") {
+        ubd_butt_schedulestitle_py(text)
+        Schedulesclick();
+    }
 }
