@@ -3,16 +3,17 @@ body {
     padding: 0px;
     background-color: #1E1E1E;
     font-family: 'Oswald', sans-serif;
+    overflow: hidden;
 }
 .wrapper {
     display: flex;
 }
-.header {
+.header,.header_mini {
     background: #282828;
     width: 87px;
     height: 100vh;
 }
-.header img {
+.header img,.header_mini img {
     width: 32px;
     height: 32px;
     display: block;
@@ -20,6 +21,11 @@ body {
     margin-top: 20px;
     margin-bottom: 20px;
     cursor: pointer;
+}
+.header_mini {
+    display: none;
+    position: absolute;
+    top: 0px;
 }
 .predmet-block-title {
     color: #fff;
@@ -64,6 +70,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     height: 739px;
+    margin-bottom: 100px;
     overflow-y: scroll;
 }
 .block_homework_content {
@@ -158,7 +165,6 @@ td {
     border-radius: 10px;
 }
 .butt {
-    width: 200px;
     background: #191919;
     padding: 5px;
     border-radius: 10px;
@@ -223,4 +229,25 @@ td {
     height: 100%;
     opacity: 0.5;
     display: none;
+}
+.bmenu {
+    width: 64px;
+    height: 64px;
+    padding: 10px;
+    display: none;
+}
+@media (max-width: 515px) {
+    .header {
+        display: none;
+    }
+    .header_mini {
+        width: 100%;
+        position: absolute;
+    }
+    .bmenu {
+        display: block;
+    }
+    .mini_navigator {
+        margin-bottom: 200px;
+    }
 }

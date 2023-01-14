@@ -1,4 +1,8 @@
+function bmenu() {
+    document.getElementById("header_mini").style.display = "block";
+}
 function allcloseblock() {
+    document.getElementById("header_mini").style.display = "none";
     document.getElementById("predmet_block").style.display = "none";
     document.getElementById("block_schedulespredmet").style.display = "none";
     document.getElementById("block_classmates").style.display = "none";
@@ -86,8 +90,14 @@ function detectpredmetout(text) {
     for (let index = 0; index < text.length; index++) {
         var element = text[index]['title'];
         var elementimg = text[index]['title'].replace(/ /g,'');
-        block = '<div class="block_navigator" style="background-image: url(img/pimg/'+elementimg+'.jpg);" img="img/pimg/'+elementimg+'.jpg" title="'+element+'" idpost="'+text[index]['id']+'" onclick="predmet_ponel_click(this)"><div class="block_navigator_ponel_center_end"><p class="block_navigator_ponel_text">'+element+'</p></div></div>'
-        document.getElementById("block_predmet_content").innerHTML += block;
+        if (index+1 == text.length) {
+            block = '<div class="block_navigator mini_navigator" style="background-image: url(img/pimg/'+elementimg+'.jpg);" img="img/pimg/'+elementimg+'.jpg" title="'+element+'" idpost="'+text[index]['id']+'" onclick="predmet_ponel_click(this)"><div class="block_navigator_ponel_center_end"><p class="block_navigator_ponel_text">'+element+'</p></div></div>'
+            document.getElementById("block_predmet_content").innerHTML += block;
+        }
+        else {
+            block = '<div class="block_navigator" style="background-image: url(img/pimg/'+elementimg+'.jpg);" img="img/pimg/'+elementimg+'.jpg" title="'+element+'" idpost="'+text[index]['id']+'" onclick="predmet_ponel_click(this)"><div class="block_navigator_ponel_center_end"><p class="block_navigator_ponel_text">'+element+'</p></div></div>'
+            document.getElementById("block_predmet_content").innerHTML += block;
+        }
     }
 }
 eel.expose(detectschedulesout);
