@@ -113,24 +113,40 @@ function detectschedulesout(text) {
             textp += "<p class='block_navigator_ponel_text_predmet'>"+l+" . "+pred[predi]+"</p>"
 
         }
-
+        if (index+1 == text.length) {
+        block = '<div class="block_navigator_schedules mini_navigator_r"><div class="block_navigator_schedules_ponel_center_end"><p class="block_navigator_ponel_text" style="width: 100%;margin-left: 0px;border-radius:25px;">'+element+'</p></div><div class="ubd_butt_schedulestitle" id='+ide+' onclick="ubd_butt_schedulestitle(this)"><h3>✏️</h3></div>'+textp+'</div>'
+        document.getElementById("block_schedulespredmet_content").innerHTML += block;
+        }
+        else {
         block = '<div class="block_navigator_schedules"><div class="block_navigator_schedules_ponel_center_end"><p class="block_navigator_ponel_text" style="width: 100%;margin-left: 0px;border-radius:25px;">'+element+'</p></div><div class="ubd_butt_schedulestitle" id='+ide+' onclick="ubd_butt_schedulestitle(this)"><h3>✏️</h3></div>'+textp+'</div>'
         document.getElementById("block_schedulespredmet_content").innerHTML += block;
+        }
     }
 }
 eel.expose(detectuser_js);
 function detectuser_js(text) {
     for (let index = 0; index < text.length; index++) {
-        textp = "<div class='classmates_list_block'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
+        if (index+1 == text.length) {
+        textp = "<div class='classmates_list_block mini_navigator'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
         document.getElementById("block_classmates_content").innerHTML += textp;
-        //console.log(text[index])
+        }
+        else {
+        textp = "<div class='classmates_list_block'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
+        document.getElementById("block_classmates_content").innerHTML += textp;     
+        }
     }
 }
 eel.expose(detectteach_js);
 function detectteach_js(text) {
     for (let index = 0; index < text.length; index++) {
-        textp = "<div class='classmates_list_block'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
-        document.getElementById("block_teachers_content").innerHTML += textp;
+        if (index+1 == text.length) {
+            textp = "<div class='classmates_list_block mini_navigator'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
+            document.getElementById("block_teachers_content").innerHTML += textp;
+        }
+        else {
+            textp = "<div class='classmates_list_block'><img src='"+text[index]['ava']+"' alt='ava'><p>"+text[index]['name']+"</p></div>";
+            document.getElementById("block_teachers_content").innerHTML += textp;
+        }
     }
 }
 eel.expose(detecthomework_js);

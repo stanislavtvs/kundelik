@@ -236,6 +236,9 @@ td {
     padding: 10px;
     display: none;
 }
+.mini_navigator {
+    margin-bottom: 150px;
+}
 @media (max-width: 515px) {
     .header {
         display: none;
@@ -247,7 +250,7 @@ td {
     .bmenu {
         display: block;
     }
-    .mini_navigator {
+    .mini_navigator,.mini_navigator_r {
         margin-bottom: 200px;
     }
 }
