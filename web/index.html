@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
+    <title id="title">Онлайн Дневник</title>
+    <link rel="icon" href="img/pimg/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="scroll.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
@@ -14,7 +15,8 @@
     <div class="block_bleck_" id="block_bleck_" onclick="block_bleck_();"></div>
     <img src="img/bmenu.svg" alt="bmenu" class="bmenu" onclick="bmenu();">
     <div class="wrapper">
-        <header class="header">
+        <header class="header" id="header">
+            <div class="header_background">
             <div class="block_book" onclick="predmeticlick();">
             <img src="img/book.svg" alt="book">
             <p class="title_menu">Предметы</p>
@@ -40,6 +42,11 @@
             <p class="title_menu">Домашняя работа</p>
             </div>
             <hr>
+            <div class="naz_block" id="naz_block" onclick="nazblockclick(this)">
+                <img src="img/sleft.svg" alt="sleft">
+                <p>Назад</p>
+            </div>
+        </div>
         </header>
         <header class="header_mini" id="header_mini">
             <div class="block_book" onclick="predmeticlick();">
@@ -120,6 +127,54 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="navigat_predmet_ponel" id="navigat_predmet_ponel" style="display: none;">
+                <h2 class="navigat_predmet_ponel_title" id="navigat_predmet_ponel_title"></h2>
+                <hr>
+                <div class="navigat_predmet_ponel_block">
+                    <div class="navigat_predmet_ponel_block_o1" id="navigat_predmet_ponel_block_o1">
+                        <p>Оценки за четверть</p>
+                    </div>
+                    <div class="navigat_predmet_ponel_block_o2" id="navigat_predmet_ponel_block_o2">
+                        <p>Оценки за урок</p>
+                    </div>
+                    <div class="navigat_predmet_ponel_block_o3" id="navigat_predmet_ponel_block_o3">
+                        <p>Домашняя работа</p>
+                    </div>
+                </div>
+            </div>
+            <div class="itog_evel_table" id="itog_evel_table" style="display: none;">
+                <table>
+                    <tbody id="itog_evel_table_tbody">
+        
+                    </tbody>
+                </table>
+                <h3 class="butt_ubd_p" onclick="butt_itog_click_py(this);" id="butt_itog_click_py" style="margin-top: 50px;">Обновить</h3>
+            </div>
+            <div class="evel_evel_table" id="evel_evel_table" style="display: none;">
+                <table>
+                    <tbody id="evel_evel_table_tbody">
+        
+                    </tbody>
+                </table>
+                <h3 class="butt_ubd_p" onclick="butt_evel_click_py(this);" id="butt_evel_click_py" style="margin-top: 50px;">Обновить</h3>
+            </div>
+            <div class="homework_block_predmet" id="homework_block_predmet" style="display: none;">
+                <div class="block_ubd_schedulestitle_" id="block_homework_click_predmet">
+                    <input placeholder='Дата' class='input' id='homework_input_data_predmet' type="date">
+                    <input placeholder='Задания' class='input' id='homework_input_text_predmet'>
+                    <h3 class='butt' id='add_schedulestitle_butt' onclick='add_homework_predmet_click(this);'>Добавить</h3><hr>
+                </div>
+                <h2 class="block_pridmet_text">Доммашняя работа</h2>
+                <h3 class="butt_ubd_p" onclick="block_homework_predmet_click(this);" id="butt_classmates_click_py_predmet">Добавить +</h3>
+                <hr>
+            <div class="block_navigator_homework_predmet" id="block_navigator_homework_predmet">
+            <table>
+                <tbody id="table_homework_predmet">
+        
+                </tbody>
+            </table>
+            </div>
             </div>
         </div>
     </div>

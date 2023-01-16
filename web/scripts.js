@@ -8,12 +8,39 @@ function allcloseblock() {
     document.getElementById("block_classmates").style.display = "none";
     document.getElementById("block_teachers").style.display = "none";
     document.getElementById("block_homework").style.display = "none";
+    document.getElementById("navigat_predmet_ponel").style.display = "none";
+    document.getElementById("naz_block").style.display = "none";
+    document.getElementById("homework_block_predmet").style.display = "none";
+    document.getElementById("itog_evel_table").style.display = "none";
+    document.getElementById("evel_evel_table").style.display = "none";
+    document.getElementById("header").setAttribute("style","");
+}
+function nazblockclick(a) {
+    type = a.getAttribute('type');
+    if (type == "nazppredmet") {
+        document.getElementById("title").innerHTML = "Дневник";
+//        document.getElementById("naz_block").setAttribute("type","nazpredmet");
+
+        document.getElementById("predmet_block").style.display = "block";
+        document.getElementById("navigat_predmet_ponel").style.display = "none";
+        document.getElementById("naz_block").style.display = "none";
+
+        document.getElementById("header").setAttribute("style","");
+
+    }
+    else if (type == "nazitogpredmet") {
+        document.getElementById("itog_evel_table").style.display = "none";
+        document.getElementById("evel_evel_table").style.display = "none";
+        document.getElementById("homework_block_predmet").style.display = "none";
+        document.getElementById("navigat_predmet_ponel").style.display = "block";
+        document.getElementById("naz_block").setAttribute("type","nazppredmet");
+    }
 }
 function block_bleck_() {
     document.getElementById("block_ubd_schedulestitle_").style.display = "none";
     document.getElementById("block_bleck_").style.display = "none";
     document.getElementById("block_homework_click").style.display = "none";
-    //document.getElementById("block_homework_click_predmet").style.display = "none";
+    document.getElementById("block_homework_click_predmet").style.display = "none";
 }
 function predmeticlick() {
     allcloseblock();
@@ -183,20 +210,26 @@ function goodhomework_click_js(text) {
     //document.getElementById("block_bleck_").style.display = "none";
     Homework();
 }
+function timeteachersclickjs() {
+    document.getElementById("butt_teachers_click_py").innerHTML = "Обновить";
+}
 eel.expose(butt_teachers_click_js);
 function butt_teachers_click_js(text) {
     if (text == "good") {
         document.getElementById("butt_teachers_click_py").innerHTML = "Успех!";
         Teachersclick();
-        document.getElementById("butt_teachers_click_py").innerHTML = "Обновить";
+        setTimeout(timeteachersclickjs, 1000);
     }
+}
+function timeclassmatesclickjs() {
+    document.getElementById("butt_classmates_click_py").innerHTML = "Обновить";
 }
 eel.expose(butt_classmates_click_js);
 function butt_classmates_click_js(text) {
     if (text == "good") {
         document.getElementById("butt_classmates_click_py").innerHTML = "Успех!";
         Classmatesclick();
-        document.getElementById("butt_classmates_click_py").innerHTML = "Обновить";
+        setTimeout(timeclassmatesclickjs, 1000);
     }
 }
 eel.expose(ubd_homework_click_js);
@@ -276,5 +309,183 @@ function delschedulestitlefun_js(text) {
     if (text != "") {
         ubd_butt_schedulestitle_py(text)
         Schedulesclick();
+    }
+}
+function predmet_ponel_click(a) {
+    var img = a.getAttribute("img");
+    var id = a.getAttribute("idpost");
+    var title = a.getAttribute("title");
+
+    document.getElementById("title").innerHTML = "Дневник - ( "+title+" )"
+    document.getElementById("naz_block").style.display = "flex";
+    document.getElementById("naz_block").setAttribute("type","nazppredmet");
+
+    document.getElementById("header").setAttribute("style","background-image: url('"+img+"');");
+    document.getElementById("navigat_predmet_ponel_title").innerHTML = title;
+
+    document.getElementById("predmet_block").style.display = "none";
+    document.getElementById("navigat_predmet_ponel").style.display = "block";
+
+    document.getElementById("navigat_predmet_ponel_block_o1").setAttribute("onclick","itog_o_click("+id+")");
+    document.getElementById("navigat_predmet_ponel_block_o2").setAttribute("onclick","eval_o_click("+id+")")
+    document.getElementById("navigat_predmet_ponel_block_o3").setAttribute("onclick","homework_o_click("+id+")")
+}
+async function itog_o_click(id) {
+
+    //login = localStorage.getItem('login')
+    login = 'stanislavkirichenko'
+
+    await eel.itog_o_click(id,login);
+
+    document.getElementById("butt_itog_click_py").setAttribute("idp", id)
+    document.getElementById("itog_evel_table").style.display = "block";
+    document.getElementById("navigat_predmet_ponel").style.display = "none";
+    document.getElementById("naz_block").setAttribute("type","nazitogpredmet");
+
+}
+eel.expose(itog_o_click_js);
+function itog_o_click_js(text) {
+    document.getElementById("itog_evel_table_tbody").innerHTML = ""
+    for (let index = 0; index < text.length; index++) {
+        document.getElementById("itog_evel_table_tbody").innerHTML += "<tr><td>Предмет</td><td>1 Четверть</td><td>2 Четверть</td><td>3 Четверть</td><td>4 Четверть</td><td>Итог</td></tr><tr><td>"+text[index]['title']+"</td><td>"+text[index]['p1']+"</td><td>"+text[index]['p2']+"</td><td>"+text[index]['p3']+"</td><td>"+text[index]['p4']+"</td><td>"+text[index]['outi']+"</td></tr>"
+    }
+}
+async function eval_o_click(id) {
+
+    //login = localStorage.getItem('login')
+    login = 'stanislavkirichenko'
+
+    await eel.eval_o_click(id,login);
+
+    document.getElementById("butt_evel_click_py").setAttribute("idp", id)
+    document.getElementById("evel_evel_table").style.display = "block";
+    document.getElementById("navigat_predmet_ponel").style.display = "none";
+    document.getElementById("naz_block").setAttribute("type","nazitogpredmet");
+
+}
+eel.expose(eval_o_click_js);
+function eval_o_click_js(text) {
+    document.getElementById("evel_evel_table_tbody").innerHTML = ""
+    for (let index = 0; index < text.length; index++) {
+        document.getElementById("evel_evel_table_tbody").innerHTML += "<tr><td>Предмет</td><td>Оценки</td></tr><tr><td>"+text[index]['title']+"</td><td>"+text[index]['eval']+"</td></tr>"
+    }
+}
+async function homework_o_click(id,login) {
+
+    //login = localStorage.getItem('login')
+    login = 'stanislavkirichenko'
+
+    await eel.homework_o_click(id,login);
+
+    document.getElementById("butt_classmates_click_py_predmet").setAttribute("idp",id);
+
+    document.getElementById("homework_block_predmet").style.display = "block";
+    document.getElementById("navigat_predmet_ponel").style.display = "none";
+    document.getElementById("naz_block").setAttribute("type","nazitogpredmet");
+
+}
+eel.expose(homework_o_click_js);
+function homework_o_click_js(text) {
+    document.getElementById("table_homework_predmet").innerHTML = "";
+    var status = ""
+    title = "<tr><th>Дата</th><th>Задания</th><th>Предметы</th><th>Статус</th></tr>"
+    textp = title
+    document.getElementById("table_homework_predmet").innerHTML = textp;
+    for (let index = 0; index < text.length; index++) {
+        if (text[index]['status'] == "True") {
+            status = "Выполнено"
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='fdelethomework_click(this)' id='"+text[index]['id']+"' idpredmet='"+text[index]['itemsid']+"'>Удалить</td><td></td></tr>";
+        }
+        else if (text[index]['status'] == "False") {
+            status = "Не выполнено"
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='fgoodhomework_click("+text[index]['id']+")'>Выполнить</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='fdelethomework_click(this)' id='"+text[index]['id']+"' idpredmet='"+text[index]['itemsid']+"'>Удалить</td></tr>";
+        }
+        document.getElementById("table_homework_predmet").innerHTML += textp;
+        //console.log(text[index])
+    }
+}
+async function block_homework_predmet_click(a) {
+
+
+    document.getElementById("block_bleck_").style.display = "block";
+    document.getElementById("block_homework_click_predmet").style.display = "block";
+}
+async function add_homework_predmet_click() {
+    data = document.getElementById("homework_input_data_predmet").value;
+    text = document.getElementById("homework_input_text_predmet").value;
+    items = document.getElementById("butt_classmates_click_py_predmet").getAttribute("idp");
+    //login = localStorage.getItem('login')
+    login = 'stanislavkirichenko'
+
+    await eel.add_homework_predmet_click(data,text,items,login);
+}
+eel.expose(goodhomework_predmet_click_js);
+function goodhomework_predmet_click_js(text,items) {
+    document.getElementById("table_homework_predmet").innerHTML = "";
+    document.getElementById("block_homework_click_predmet").style.display = "none";
+    document.getElementById("block_bleck_").style.display = "none";
+    //login = localStorage.getItem('login')
+    login = 'stanislavkirichenko'
+    homework_o_click(items,login);
+}
+async function fgoodhomework_click(id) {
+    await eel.fgoodhomework_click_py(id);
+}
+eel.expose(fgoodhomework_click_js);
+function fgoodhomework_click_js(text,idp) {
+    document.getElementById("table_homework_predmet").innerHTML = "";
+    document.getElementById("block_homework_click").style.display = "none";
+    document.getElementById("block_bleck_").style.display = "none";
+    //login = localStorage.getItem('login')
+    login = 'stanislavkirichenko'
+    homework_o_click(idp,login);
+}
+async function fdelethomework_click(a) {
+
+    id = a.getAttribute("id")
+    idp = a.getAttribute("idpredmet")
+
+    await eel.fdelethomework_click(id,idp);
+}
+eel.expose(fgoodhomework_click_js);
+function fgoodhomework_click_js(text,idp) {
+    document.getElementById("table_homework_predmet").innerHTML = "";
+    document.getElementById("block_homework_click").style.display = "none";
+    document.getElementById("block_bleck_").style.display = "none";
+    //login = localStorage.getItem('login')
+    login = 'stanislavkirichenko'
+    homework_o_click(idp,login);
+}
+async function butt_itog_click_py(a) {
+    document.getElementById("butt_itog_click_py").innerHTML = "Загрузка...";
+    id = a.getAttribute("idp")
+    await eel.butt_itog_click_py(id);
+}
+function timeitogclickjs() {
+    document.getElementById("butt_itog_click_py").innerHTML = "Обновить";
+}
+eel.expose(butt_itog_click_js);
+function butt_itog_click_js(text,id) {
+    if (text == "good") {
+        document.getElementById("butt_itog_click_py").innerHTML = "Успех!";
+        itog_o_click(id)
+        setTimeout(timeitogclickjs, 1000);
+    }
+}
+
+async function butt_evel_click_py(a) {
+    document.getElementById("butt_evel_click_py").innerHTML = "Загрузка...";
+    id = a.getAttribute("idp")
+    await eel.butt_evel_click_py(id);
+}
+function timeevelclickjs() {
+    document.getElementById("butt_evel_click_py").innerHTML = "Обновить";  
+}
+eel.expose(butt_evel_click_js);
+function butt_evel_click_js(text,id) {
+    if (text == "good") {
+        document.getElementById("butt_evel_click_py").innerHTML = "Успех!";
+        eval_o_click(id)
+        setTimeout(timeevelclickjs, 1000);
     }
 }
