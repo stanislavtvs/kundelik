@@ -17,7 +17,7 @@
     <div class="wrapper">
         <header class="header" id="header">
             <div class="header_background">
-            <div class="block_book" onclick="predmeticlick();">
+            <div class="block_book" style="padding-top: 20px;" onclick="predmeticlick();">
             <img src="img/book.svg" alt="book">
             <p class="title_menu">Предметы</p>
             </div>
@@ -43,8 +43,13 @@
             </div>
             <hr>
             <div class="naz_block" id="naz_block" onclick="nazblockclick(this)">
-                <img src="img/sleft.svg" alt="sleft">
+                <img src="img/sleft.svg" alt="sleft" style="padding-top: 20px;">
                 <p>Назад</p>
+            </div>
+            <div class="account_block">
+                <p class="logo_user_text" id="logo_user_text"></p>
+                <hr>
+                <img src="img/exit.svg" alt="exit" class="logo_exit" onclick="exit();">
             </div>
         </div>
         </header>
@@ -76,6 +81,12 @@
             <hr>
         </header>
         <div class="content">
+            <div class="media_naz_block_mini">
+            <div class="naz_block_mini" id="naz_block_mini" onclick="nazblockclick(this)">
+                <img src="img/sleft.svg" alt="sleft">
+                <p>Назад</p>
+            </div>
+            </div>
             <div class="predmet-block" id="predmet_block">
                 <h1 class="predmet-block-title">Предметы</h1>
                 <hr>
@@ -144,12 +155,11 @@
                 </div>
             </div>
             <div class="itog_evel_table" id="itog_evel_table" style="display: none;">
-                <table>
-                    <tbody id="itog_evel_table_tbody">
-        
-                    </tbody>
-                </table>
-                <h3 class="butt_ubd_p" onclick="butt_itog_click_py(this);" id="butt_itog_click_py" style="margin-top: 50px;">Обновить</h3>
+                <h3 class="butt_ubd_p" onclick="butt_itog_click_py(this);" id="butt_itog_click_py" style="margin-top: 30px;">Обновить</h3>
+                <hr>
+                <div class="block_itog_o" id="itog_evel_table_tbody">
+
+                </div>
             </div>
             <div class="evel_evel_table" id="evel_evel_table" style="display: none;">
                 <table>
@@ -175,6 +185,13 @@
                 </tbody>
             </table>
             </div>
+            </div>
+            <div class="logo_block" id="logo_block">
+                <img src="img/logo-user.png" alt="logo-user" class="logo_block_img">
+                <input type="text" class="input logo_block_input" id="logo_block_input_login" placeholder="Логин">
+                <input type="text" class="input" id="logo_block_input_password" placeholder="Пароль">
+                <div class="butt" style="text-align: center;" onclick="login_fun();">Вход</div>
+                <p id="status_text_"></p>
             </div>
         </div>
     </div>

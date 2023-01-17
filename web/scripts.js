@@ -1,3 +1,56 @@
+login = localStorage.getItem('login')
+password = localStorage.getItem('password')
+namef = localStorage.getItem('namef')
+name = localStorage.getItem('name')
+
+if (login != null) {
+    var p1 = name.substring(0, 1)
+    var p2 = namef.substring(0, 1)
+    document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+    predmeticlick();
+    document.getElementById("header").style.display = "block";
+    document.getElementById("logo_block").style.display = "none";
+
+    //document.getElementById("name_account_block").innerHTML = namef;
+}
+else {
+    document.getElementById("predmet_block").style.display = "none";
+    document.getElementById("header").style.display = "none";
+    document.getElementById("logo_block").style.display = "block";
+}
+async function login_fun() {
+    var logo_block_input_login = document.getElementById("logo_block_input_login").value;
+    var logo_block_input_password = document.getElementById("logo_block_input_password").value;
+
+    await eel.login_fun(logo_block_input_login,logo_block_input_password);
+}
+eel.expose(login_fun_js);
+function login_fun_js(text) {
+    for (let index = 0; index < text.length; index++) {
+        console.log(text[index]['cod'])
+        if (text[index]['cod'] == "good") {
+        //document.getElementById("status_text_").innerHTML = ""
+        localStorage.setItem('login', text[index]['name']);
+//        localStorage.setItem('password', text[index]['password']);
+        var name = text[index]['namef'].split(" ")
+        var p1 = name[0].substring(0, 1)
+        var p2 = name[1].substring(0, 1)
+        localStorage.setItem('name', name[0]);
+        localStorage.setItem('namef', name[1]);
+        document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        predmeticlick();
+        document.getElementById("header").style.display = "block";
+        document.getElementById("logo_block").style.display = "none"; 
+        //document.getElementById("name_account_block").innerHTML = text[index]['namef']
+        }
+        else if (text[index]['cod'] == "error1") {
+            document.getElementById("status_text_").innerHTML = "Логин или пароль неверный!"
+        }
+        else if (text[index]['cod'] == "error2") {
+            document.getElementById("status_text_").innerHTML = "Вы вели не все поля!"
+        }
+    }
+}
 function bmenu() {
     document.getElementById("header_mini").style.display = "block";
 }
@@ -10,6 +63,7 @@ function allcloseblock() {
     document.getElementById("block_homework").style.display = "none";
     document.getElementById("navigat_predmet_ponel").style.display = "none";
     document.getElementById("naz_block").style.display = "none";
+    document.getElementById("naz_block_mini").style.display = "none";
     document.getElementById("homework_block_predmet").style.display = "none";
     document.getElementById("itog_evel_table").style.display = "none";
     document.getElementById("evel_evel_table").style.display = "none";
@@ -24,6 +78,7 @@ function nazblockclick(a) {
         document.getElementById("predmet_block").style.display = "block";
         document.getElementById("navigat_predmet_ponel").style.display = "none";
         document.getElementById("naz_block").style.display = "none";
+        document.getElementById("naz_block_mini").style.display = "none";
 
         document.getElementById("header").setAttribute("style","");
 
@@ -34,6 +89,7 @@ function nazblockclick(a) {
         document.getElementById("homework_block_predmet").style.display = "none";
         document.getElementById("navigat_predmet_ponel").style.display = "block";
         document.getElementById("naz_block").setAttribute("type","nazppredmet");
+        document.getElementById("naz_block_mini").setAttribute("type","nazppredmet");
     }
 }
 function block_bleck_() {
@@ -318,7 +374,9 @@ function predmet_ponel_click(a) {
 
     document.getElementById("title").innerHTML = "Дневник - ( "+title+" )"
     document.getElementById("naz_block").style.display = "flex";
+    document.getElementById("naz_block_mini").style.display = "flex";
     document.getElementById("naz_block").setAttribute("type","nazppredmet");
+    document.getElementById("naz_block_mini").setAttribute("type","nazppredmet");
 
     document.getElementById("header").setAttribute("style","background-image: url('"+img+"');");
     document.getElementById("navigat_predmet_ponel_title").innerHTML = title;
@@ -341,13 +399,15 @@ async function itog_o_click(id) {
     document.getElementById("itog_evel_table").style.display = "block";
     document.getElementById("navigat_predmet_ponel").style.display = "none";
     document.getElementById("naz_block").setAttribute("type","nazitogpredmet");
+    document.getElementById("naz_block_mini").setAttribute("type","nazitogpredmet");
 
 }
 eel.expose(itog_o_click_js);
 function itog_o_click_js(text) {
     document.getElementById("itog_evel_table_tbody").innerHTML = ""
     for (let index = 0; index < text.length; index++) {
-        document.getElementById("itog_evel_table_tbody").innerHTML += "<tr><td>Предмет</td><td>1 Четверть</td><td>2 Четверть</td><td>3 Четверть</td><td>4 Четверть</td><td>Итог</td></tr><tr><td>"+text[index]['title']+"</td><td>"+text[index]['p1']+"</td><td>"+text[index]['p2']+"</td><td>"+text[index]['p3']+"</td><td>"+text[index]['p4']+"</td><td>"+text[index]['outi']+"</td></tr>"
+        //document.getElementById("itog_evel_table_tbody").innerHTML += "<tr><td>Предмет</td><td>1 Четверть</td><td>2 Четверть</td><td>3 Четверть</td><td>4 Четверть</td><td>Итог</td></tr><tr><td>"+text[index]['title']+"</td><td>"+text[index]['p1']+"</td><td>"+text[index]['p2']+"</td><td>"+text[index]['p3']+"</td><td>"+text[index]['p4']+"</td><td>"+text[index]['outi']+"</td></tr>"
+        document.getElementById("itog_evel_table_tbody").innerHTML += "<div class='block_itog_o_content'><h2>1 Четверть</h2><h1>"+text[index]['p1']+"</h1></div><div class='block_itog_o_content'><h2>2 Четверть</h2><h1>"+text[index]['p2']+"</h1></div><div class='block_itog_o_content'><h2>3 Четверть</h2><h1>"+text[index]['p3']+"</h1></div><div class='block_itog_o_content'><h2>4 Четверть</h2><h1>"+text[index]['p4']+"</h1></div><div class='block_itog_o_content'><h2>Итог</h2><h1>"+text[index]['outi']+"</h1></div>"
     }
 }
 async function eval_o_click(id) {
@@ -361,6 +421,7 @@ async function eval_o_click(id) {
     document.getElementById("evel_evel_table").style.display = "block";
     document.getElementById("navigat_predmet_ponel").style.display = "none";
     document.getElementById("naz_block").setAttribute("type","nazitogpredmet");
+    document.getElementById("naz_block_mini").setAttribute("type","nazitogpredmet");
 
 }
 eel.expose(eval_o_click_js);
@@ -382,6 +443,7 @@ async function homework_o_click(id,login) {
     document.getElementById("homework_block_predmet").style.display = "block";
     document.getElementById("navigat_predmet_ponel").style.display = "none";
     document.getElementById("naz_block").setAttribute("type","nazitogpredmet");
+    document.getElementById("naz_block_mini").setAttribute("type","nazitogpredmet");
 
 }
 eel.expose(homework_o_click_js);
@@ -487,5 +549,24 @@ function butt_evel_click_js(text,id) {
         document.getElementById("butt_evel_click_py").innerHTML = "Успех!";
         eval_o_click(id)
         setTimeout(timeevelclickjs, 1000);
+    }
+}
+function exit() {
+    localStorage.clear();
+    login = localStorage.getItem('login')
+    password = localStorage.getItem('password')
+    namef = localStorage.getItem('namef')
+
+    if (login != null) {
+        predmeticlick();
+        document.getElementById("header").style.display = "block";
+        document.getElementById("logo_block").style.display = "none";
+
+        //document.getElementById("name_account_block").innerHTML = namef;
+    }
+    else {
+        document.getElementById("predmet_block").style.display = "none";
+        document.getElementById("header").style.display = "none";
+        document.getElementById("logo_block").style.display = "block";
     }
 }
