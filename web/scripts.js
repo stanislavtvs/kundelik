@@ -3,6 +3,22 @@ password = localStorage.getItem('password')
 namef = localStorage.getItem('namef')
 name = localStorage.getItem('name')
 
+function allcloseblock() {
+    document.getElementById("header_mini").style.display = "none";
+    document.getElementById("predmet_block").style.display = "none";
+    document.getElementById("block_schedulespredmet").style.display = "none";
+    document.getElementById("block_classmates").style.display = "none";
+    document.getElementById("block_teachers").style.display = "none";
+    document.getElementById("block_homework").style.display = "none";
+    document.getElementById("navigat_predmet_ponel").style.display = "none";
+    document.getElementById("naz_block").style.display = "none";
+    document.getElementById("naz_block_mini").style.display = "none";
+    document.getElementById("homework_block_predmet").style.display = "none";
+    document.getElementById("itog_evel_table").style.display = "none";
+    document.getElementById("evel_evel_table").style.display = "none";
+    document.getElementById("header").setAttribute("style","");
+}
+
 if (login != null) {
     var p1 = name.substring(0, 1)
     var p2 = namef.substring(0, 1)
@@ -14,6 +30,7 @@ if (login != null) {
     //document.getElementById("name_account_block").innerHTML = namef;
 }
 else {
+    allcloseblock();
     document.getElementById("predmet_block").style.display = "none";
     document.getElementById("header").style.display = "none";
     document.getElementById("logo_block").style.display = "block";
@@ -23,6 +40,12 @@ async function login_fun() {
     var logo_block_input_password = document.getElementById("logo_block_input_password").value;
 
     await eel.login_fun(logo_block_input_login,logo_block_input_password);
+}
+async function login_fun_mini() {
+    var logo_block_input_login = document.getElementById("logo_block_input_login").value;
+    var logo_block_input_password = document.getElementById("logo_block_input_password").value;
+
+    await eel.login_fun_mini(logo_block_input_login,logo_block_input_password);
 }
 eel.expose(login_fun_js);
 function login_fun_js(text) {
@@ -51,23 +74,35 @@ function login_fun_js(text) {
         }
     }
 }
+eel.expose(login_fun_mini_js);
+function login_fun_mini_js(text) {
+    for (let index = 0; index < text.length; index++) {
+        console.log(text[index]['cod'])
+        if (text[index]['cod'] == "good") {
+        //document.getElementById("status_text_").innerHTML = ""
+        localStorage.setItem('login', text[index]['name']);
+//        localStorage.setItem('password', text[index]['password']);
+        var name = text[index]['namef'].split(" ")
+        var p1 = name[0].substring(0, 1)
+        var p2 = name[1].substring(0, 1)
+        localStorage.setItem('name', name[0]);
+        localStorage.setItem('namef', name[1]);
+        document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        predmeticlick();
+        //document.getElementById("header").style.display = "none";
+        document.getElementById("logo_block").style.display = "none"; 
+        //document.getElementById("name_account_block").innerHTML = text[index]['namef']
+        }
+        else if (text[index]['cod'] == "error1") {
+            document.getElementById("status_text_").innerHTML = "Логин или пароль неверный!"
+        }
+        else if (text[index]['cod'] == "error2") {
+            document.getElementById("status_text_").innerHTML = "Вы вели не все поля!"
+        }
+    }
+}
 function bmenu() {
     document.getElementById("header_mini").style.display = "block";
-}
-function allcloseblock() {
-    document.getElementById("header_mini").style.display = "none";
-    document.getElementById("predmet_block").style.display = "none";
-    document.getElementById("block_schedulespredmet").style.display = "none";
-    document.getElementById("block_classmates").style.display = "none";
-    document.getElementById("block_teachers").style.display = "none";
-    document.getElementById("block_homework").style.display = "none";
-    document.getElementById("navigat_predmet_ponel").style.display = "none";
-    document.getElementById("naz_block").style.display = "none";
-    document.getElementById("naz_block_mini").style.display = "none";
-    document.getElementById("homework_block_predmet").style.display = "none";
-    document.getElementById("itog_evel_table").style.display = "none";
-    document.getElementById("evel_evel_table").style.display = "none";
-    document.getElementById("header").setAttribute("style","");
 }
 function nazblockclick(a) {
     type = a.getAttribute('type');
@@ -101,7 +136,8 @@ function block_bleck_() {
 function predmeticlick() {
     allcloseblock();
     document.getElementById("predmet_block").style.display = "block";
-    detectpredmet("stanislavkirichenko");
+    login = localStorage.getItem('login')
+    detectpredmet(login);
 }
 function Schedulesclick() {
     allcloseblock();
@@ -112,41 +148,47 @@ function Classmatesclick() {
     document.getElementById("block_classmates_content").innerHTML = "";
     allcloseblock();
     document.getElementById("block_classmates").style.display = "block";
-    detectuser_py();
+    login = localStorage.getItem('login')
+    detectuser_py(login);
 }
 function Teachersclick() {
     document.getElementById("block_teachers_content").innerHTML = "";
     allcloseblock();
     document.getElementById("block_teachers").style.display = "block";
-   detectteach_py();
+    login = localStorage.getItem('login')
+    detectteach_py(login);
 }
 function Homework() {
     allcloseblock(); 
     document.getElementById("block_homework").style.display = "block";
-    detecthomework();
+    login = localStorage.getItem('login')
+    detecthomework(login);
 }
 async function butt_classmates_click_py() {
     document.getElementById("butt_classmates_click_py").innerHTML = "Загрузка...";
-    await eel.butt_classmates_click_py();
+    login = localStorage.getItem('login')
+    await eel.butt_classmates_click_py(login);
 }
 async function butt_teachers_click_py() {
     document.getElementById("butt_teachers_click_py").innerHTML = "Загрузка...";
-    await eel.butt_teachers_click_py();
+    login = localStorage.getItem('login')
+    await eel.butt_teachers_click_py(login);
 }
 async function detectpredmet(login) {
     await eel.detectpredmet(login);
 }
 async function detectschedules() {
-    await eel.detectschedules();
+    login = localStorage.getItem('login')
+    await eel.detectschedules(login);
 }
-async function detectuser_py() {
-    await eel.detectuser_py();
+async function detectuser_py(login) {
+    await eel.detectuser_py(login);
 }
-async function detectteach_py() {
-    await eel.detectteach_py();
+async function detectteach_py(login) {
+    await eel.detectteach_py(login);
 }
-async function detecthomework() {
-    await eel.detecthomework();
+async function detecthomework(login) {
+    await eel.detecthomework(login);
 }
 async function goodhomework_click(id) {
     await eel.goodhomework_click_py(id);
@@ -390,8 +432,7 @@ function predmet_ponel_click(a) {
 }
 async function itog_o_click(id) {
 
-    //login = localStorage.getItem('login')
-    login = 'stanislavkirichenko'
+    login = localStorage.getItem('login')
 
     await eel.itog_o_click(id,login);
 
@@ -412,8 +453,7 @@ function itog_o_click_js(text) {
 }
 async function eval_o_click(id) {
 
-    //login = localStorage.getItem('login')
-    login = 'stanislavkirichenko'
+    login = localStorage.getItem('login')
 
     await eel.eval_o_click(id,login);
 
@@ -431,10 +471,10 @@ function eval_o_click_js(text) {
         document.getElementById("evel_evel_table_tbody").innerHTML += "<tr><td>Предмет</td><td>Оценки</td></tr><tr><td>"+text[index]['title']+"</td><td>"+text[index]['eval']+"</td></tr>"
     }
 }
-async function homework_o_click(id,login) {
+async function homework_o_click(id) {
 
-    //login = localStorage.getItem('login')
-    login = 'stanislavkirichenko'
+    login = localStorage.getItem('login')
+    //login = 'stanislavkirichenko'
 
     await eel.homework_o_click(id,login);
 
@@ -476,8 +516,7 @@ async function add_homework_predmet_click() {
     data = document.getElementById("homework_input_data_predmet").value;
     text = document.getElementById("homework_input_text_predmet").value;
     items = document.getElementById("butt_classmates_click_py_predmet").getAttribute("idp");
-    //login = localStorage.getItem('login')
-    login = 'stanislavkirichenko'
+    login = localStorage.getItem('login')
 
     await eel.add_homework_predmet_click(data,text,items,login);
 }
@@ -487,8 +526,7 @@ function goodhomework_predmet_click_js(text,items) {
     document.getElementById("block_homework_click_predmet").style.display = "none";
     document.getElementById("block_bleck_").style.display = "none";
     //login = localStorage.getItem('login')
-    login = 'stanislavkirichenko'
-    homework_o_click(items,login);
+    homework_o_click(items);
 }
 async function fgoodhomework_click(id) {
     await eel.fgoodhomework_click_py(id);
@@ -499,8 +537,7 @@ function fgoodhomework_click_js(text,idp) {
     document.getElementById("block_homework_click").style.display = "none";
     document.getElementById("block_bleck_").style.display = "none";
     //login = localStorage.getItem('login')
-    login = 'stanislavkirichenko'
-    homework_o_click(idp,login);
+    homework_o_click(idp);
 }
 async function fdelethomework_click(a) {
 
@@ -515,13 +552,13 @@ function fgoodhomework_click_js(text,idp) {
     document.getElementById("block_homework_click").style.display = "none";
     document.getElementById("block_bleck_").style.display = "none";
     //login = localStorage.getItem('login')
-    login = 'stanislavkirichenko'
-    homework_o_click(idp,login);
+    homework_o_click(idp);
 }
 async function butt_itog_click_py(a) {
     document.getElementById("butt_itog_click_py").innerHTML = "Загрузка...";
     id = a.getAttribute("idp")
-    await eel.butt_itog_click_py(id);
+    login = localStorage.getItem('login')
+    await eel.butt_itog_click_py(id,login);
 }
 function timeitogclickjs() {
     document.getElementById("butt_itog_click_py").innerHTML = "Обновить";
@@ -538,7 +575,8 @@ function butt_itog_click_js(text,id) {
 async function butt_evel_click_py(a) {
     document.getElementById("butt_evel_click_py").innerHTML = "Загрузка...";
     id = a.getAttribute("idp")
-    await eel.butt_evel_click_py(id);
+    login = localStorage.getItem('login')
+    await eel.butt_evel_click_py(id,login);
 }
 function timeevelclickjs() {
     document.getElementById("butt_evel_click_py").innerHTML = "Обновить";  
@@ -565,6 +603,7 @@ function exit() {
         //document.getElementById("name_account_block").innerHTML = namef;
     }
     else {
+        allcloseblock();
         document.getElementById("predmet_block").style.display = "none";
         document.getElementById("header").style.display = "none";
         document.getElementById("logo_block").style.display = "block";

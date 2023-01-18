@@ -452,9 +452,21 @@ td {
     .navigat_predmet_ponel_block_o3 {
         margin-bottom: 150px;
     }
+    .butt_pk {
+        display: none;
+    }
+    .butt_mini {
+        display: block;
+    }
 }
 @media (min-width: 515px) {
     .media_naz_block_mini {
+        display: none;
+    }
+    .butt_pk {
+        display: block;
+    }
+    .butt_mini {
         display: none;
     }
 }
