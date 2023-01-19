@@ -409,6 +409,11 @@ td {
     width: 215px;
     margin-top: 200px;
 }
+.registr_block {
+    margin: 0 auto;
+    width: 215px;
+    margin-top: 100px;
+}
 .logo_block_img {
     width: 64px;
     height: 64px;
@@ -420,6 +425,15 @@ td {
 .logo_block_input {
     display: block;
     margin-top: 25px;
+}
+#status_text_ {
+    color: red;
+    text-align: center;
+}
+.reg_butt {
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
 }
 @media (max-width: 515px) {
     .header {
@@ -457,6 +471,18 @@ td {
     }
     .butt_mini {
         display: block;
+    }
+    .account_block {
+        position: relative;
+        left: 0px;
+    }
+    .logo_user_text {
+        width: 32px;
+        height: 32px;
+        margin: 0 auto;
+    }
+    .block_ubd_schedulestitle_ {
+        width: 85%;
     }
 }
 @media (min-width: 515px) {

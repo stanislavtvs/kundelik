@@ -19,21 +19,49 @@ function allcloseblock() {
     document.getElementById("header").setAttribute("style","");
 }
 
-if (login != null) {
-    var p1 = name.substring(0, 1)
-    var p2 = namef.substring(0, 1)
-    document.getElementById("logo_user_text").innerHTML = p1+"."+p2
-    predmeticlick();
-    document.getElementById("header").style.display = "block";
-    document.getElementById("logo_block").style.display = "none";
+var widthvar = window.innerWidth
 
-    //document.getElementById("name_account_block").innerHTML = namef;
+if (widthvar < 516) {
+    if (login != null) {
+        var p1 = name.substring(0, 1)
+        var p2 = namef.substring(0, 1)
+        document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        //document.getElementById("logo_user_text_mini").innerHTML = p1+"."+p2
+        predmeticlick();
+        document.getElementById("header").style.display = "none";
+        document.getElementById("bmenu").style.display = "block";
+        document.getElementById("logo_block").style.display = "none";
+    
+        //document.getElementById("name_account_block").innerHTML = namef;
+    }
+    else {
+        allcloseblock();
+        document.getElementById("predmet_block").style.display = "none";
+        document.getElementById("header").style.display = "none";
+        document.getElementById("bmenu").style.display = "none";
+        document.getElementById("logo_block").style.display = "block";
+    }
 }
-else {
-    allcloseblock();
-    document.getElementById("predmet_block").style.display = "none";
-    document.getElementById("header").style.display = "none";
-    document.getElementById("logo_block").style.display = "block";
+else if (widthvar > 516) {
+    if (login != null) {
+        var p1 = name.substring(0, 1)
+        var p2 = namef.substring(0, 1)
+        document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        //document.getElementById("logo_user_text_mini").innerHTML = p1+"."+p2
+        predmeticlick();
+        document.getElementById("header").style.display = "block";
+        document.getElementById("bmenu").style.display = "none";
+        document.getElementById("logo_block").style.display = "none";
+    
+        //document.getElementById("name_account_block").innerHTML = namef;
+    }
+    else {
+        allcloseblock();
+        document.getElementById("predmet_block").style.display = "none";
+        document.getElementById("header").style.display = "none";
+        document.getElementById("bmenu").style.display = "none";
+        document.getElementById("logo_block").style.display = "block";
+    }
 }
 async function login_fun() {
     var logo_block_input_login = document.getElementById("logo_block_input_login").value;
@@ -47,6 +75,30 @@ async function login_fun_mini() {
 
     await eel.login_fun_mini(logo_block_input_login,logo_block_input_password);
 }
+async function reg_fun() {
+    var logo_block_input_login = document.getElementById("logo_block_input_login_reg").value;
+    var logo_block_input_password = document.getElementById("logo_block_input_password_reg").value;
+    var logo_block_input_email = document.getElementById("logo_block_input_email").value;
+    var logo_block_input_telegram = document.getElementById("logo_block_input_telegram").value;
+    var logo_block_input_name = document.getElementById("logo_block_input_name").value;
+    var logo_block_input_fname = document.getElementById("logo_block_input_fname").value;
+
+    await eel.reg_fun(logo_block_input_login,logo_block_input_password,logo_block_input_email,logo_block_input_telegram,logo_block_input_name,logo_block_input_fname);
+}
+async function reg_fun_mini() {
+    var logo_block_input_login = document.getElementById("logo_block_input_login_reg").value;
+    var logo_block_input_password = document.getElementById("logo_block_input_password_reg").value;
+    var logo_block_input_email = document.getElementById("logo_block_input_email").value;
+    var logo_block_input_telegram = document.getElementById("logo_block_input_telegram").value;
+    var logo_block_input_name = document.getElementById("logo_block_input_name").value;
+    var logo_block_input_fname = document.getElementById("logo_block_input_fname").value;
+
+    await eel.reg_fun_mini(logo_block_input_login,logo_block_input_password,logo_block_input_email,logo_block_input_telegram,logo_block_input_name,logo_block_input_fname);
+}
+function errortimout() {
+    document.getElementById("status_text_").innerHTML = "";
+    document.getElementById("status_text_reg").innerHTML = "";
+  }
 eel.expose(login_fun_js);
 function login_fun_js(text) {
     for (let index = 0; index < text.length; index++) {
@@ -61,6 +113,7 @@ function login_fun_js(text) {
         localStorage.setItem('name', name[0]);
         localStorage.setItem('namef', name[1]);
         document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        //document.getElementById("logo_user_text_mini").innerHTML = p1+"."+p2
         predmeticlick();
         document.getElementById("header").style.display = "block";
         document.getElementById("logo_block").style.display = "none"; 
@@ -68,12 +121,44 @@ function login_fun_js(text) {
         }
         else if (text[index]['cod'] == "error1") {
             document.getElementById("status_text_").innerHTML = "Логин или пароль неверный!"
+            setTimeout(errortimout, 2000);
         }
         else if (text[index]['cod'] == "error2") {
             document.getElementById("status_text_").innerHTML = "Вы вели не все поля!"
+            setTimeout(errortimout, 2000);
         }
     }
 }
+eel.expose(reg_fun_js);
+function reg_fun_js(text) {
+    for (let index = 0; index < text.length; index++) {
+        if (text[index]['cod'] == "good") {
+        //document.getElementById("status_text_").innerHTML = ""
+        localStorage.setItem('login', text[index]['name']);
+        console.log(text[index]['name'])
+//        localStorage.setItem('password', text[index]['password']);
+        var name = text[index]['namef'].split(" ")
+        var p1 = name[0].substring(0, 1)
+        var p2 = name[1].substring(0, 1)
+        localStorage.setItem('name', name[0]);
+        localStorage.setItem('namef', name[1]);
+        document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        predmeticlick();
+        document.getElementById("header").style.display = "block";
+        document.getElementById("registr_block").style.display = "none"; 
+        //document.getElementById("name_account_block").innerHTML = text[index]['namef']
+        }
+        else if (text[index]['cod'] == "error1") {
+            document.getElementById("status_text_reg").innerHTML = "Логин или пароль неверный!"
+            setTimeout(errortimout, 2000);
+        }
+        else if (text[index]['cod'] == "error2") {
+            document.getElementById("status_text_reg").innerHTML = "Вы вели не все поля!"
+            setTimeout(errortimout, 2000);
+        }
+    }
+}
+
 eel.expose(login_fun_mini_js);
 function login_fun_mini_js(text) {
     for (let index = 0; index < text.length; index++) {
@@ -88,16 +173,49 @@ function login_fun_mini_js(text) {
         localStorage.setItem('name', name[0]);
         localStorage.setItem('namef', name[1]);
         document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        //document.getElementById("logo_user_text_mini").innerHTML = p1+"."+p2
         predmeticlick();
-        //document.getElementById("header").style.display = "none";
+        document.getElementById("bmenu").style.display = "block";
         document.getElementById("logo_block").style.display = "none"; 
         //document.getElementById("name_account_block").innerHTML = text[index]['namef']
         }
         else if (text[index]['cod'] == "error1") {
             document.getElementById("status_text_").innerHTML = "Логин или пароль неверный!"
+            setTimeout(errortimout, 2000);
         }
         else if (text[index]['cod'] == "error2") {
             document.getElementById("status_text_").innerHTML = "Вы вели не все поля!"
+            setTimeout(errortimout, 2000);
+        }
+    }
+}
+eel.expose(reg_fun_mini_js);
+function reg_fun_mini_js(text) {
+    for (let index = 0; index < text.length; index++) {
+        console.log(text[index]['cod'])
+        if (text[index]['cod'] == "good") {
+        //document.getElementById("status_text_").innerHTML = ""
+        localStorage.setItem('login', text[index]['name']);
+//        localStorage.setItem('password', text[index]['password']);
+        var name = text[index]['namef'].split(" ")
+        var p1 = name[0].substring(0, 1)
+        var p2 = name[1].substring(0, 1)
+        localStorage.setItem('name', name[0]);
+        localStorage.setItem('namef', name[1]);
+        document.getElementById("logo_user_text").innerHTML = p1+"."+p2
+        //document.getElementById("logo_user_text_mini").innerHTML = p1+"."+p2
+        predmeticlick();
+        document.getElementById("bmenu").style.display = "block";
+        document.getElementById("registr_block").style.display = "none"; 
+        //document.getElementById("name_account_block").innerHTML = text[index]['namef']
+        }
+        else if (text[index]['cod'] == "error1") {
+            document.getElementById("status_text_reg").innerHTML = "Логин или пароль неверный!"
+            setTimeout(errortimout, 2000);
+        }
+        else if (text[index]['cod'] == "error2") {
+            document.getElementById("status_text_reg").innerHTML = "Вы вели не все поля!"
+            setTimeout(errortimout, 2000);
         }
     }
 }
@@ -197,7 +315,9 @@ async function delethomework_click(id) {
     await eel.delethomework_click(id);
 }
 async function block_homework_click() {
-    await eel.ubd_homework_click();
+    login = localStorage.getItem('login')
+
+    await eel.ubd_homework_click(login);
 
     document.getElementById("block_bleck_").style.display = "block";
     document.getElementById("block_homework_click").style.display = "block";
@@ -206,8 +326,9 @@ async function add_homework_click() {
     data = document.getElementById("homework_input_data").value;
     text = document.getElementById("homework_input_text").value;
     items = document.getElementById("homework_input_items").value;
+    login = localStorage.getItem('login')
 
-    await eel.add_homework_click(data,text,items,'stanislavkirichenko');
+    await eel.add_homework_click(data,text,items,login);
 }
 eel.expose(detectpredmetout);
 function detectpredmetout(text) {
@@ -349,7 +470,8 @@ function ubd_butt_schedulestitle (a) {
     ubd_butt_schedulestitle_py(id);
 }
 async function ubd_butt_schedulestitle_py(id) {
-    await eel.ubd_butt_schedulestitle_py(id);
+    login = localStorage.getItem('login')
+    await eel.ubd_butt_schedulestitle_py(id,login);
 }
 eel.expose(ubd_butt_schedulestitle_js);
 function ubd_butt_schedulestitle_js(text) {
@@ -388,7 +510,8 @@ function add_schedulestitle_butt(a) {
     add_schedulestitle_butt_py(idp,text);
 }
 async function add_schedulestitle_butt_py(idp,text) {
-    await eel.add_schedulestitle_butt_py(idp,text);
+    login = localStorage.getItem('login')
+    await eel.add_schedulestitle_butt_py(idp,text,login);
 }
 eel.expose(add_schedulestitle_butt_js);
 function add_schedulestitle_butt_js(text) {
@@ -474,7 +597,6 @@ function eval_o_click_js(text) {
 async function homework_o_click(id) {
 
     login = localStorage.getItem('login')
-    //login = 'stanislavkirichenko'
 
     await eel.homework_o_click(id,login);
 
@@ -598,6 +720,7 @@ function exit() {
     if (login != null) {
         predmeticlick();
         document.getElementById("header").style.display = "block";
+        document.getElementById("bmenu").style.display = "block";
         document.getElementById("logo_block").style.display = "none";
 
         //document.getElementById("name_account_block").innerHTML = namef;
@@ -606,6 +729,15 @@ function exit() {
         allcloseblock();
         document.getElementById("predmet_block").style.display = "none";
         document.getElementById("header").style.display = "none";
+        document.getElementById("bmenu").style.display = "none";
         document.getElementById("logo_block").style.display = "block";
     }
+}
+function click_reg() {
+    document.getElementById("logo_block").style.display = "none";
+    document.getElementById("registr_block").style.display = "block";
+}
+function click_log() {
+    document.getElementById("logo_block").style.display = "block";
+    document.getElementById("registr_block").style.display = "none";   
 }

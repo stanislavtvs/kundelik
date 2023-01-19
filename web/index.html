@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="block_bleck_" id="block_bleck_" onclick="block_bleck_();"></div>
-    <img src="img/bmenu.svg" alt="bmenu" class="bmenu" onclick="bmenu();">
+    <img src="img/bmenu.svg" alt="bmenu" class="bmenu" id="bmenu" onclick="bmenu();">
     <div class="wrapper">
         <header class="header" id="header">
             <div class="header_background">
@@ -54,7 +54,7 @@
         </div>
         </header>
         <header class="header_mini" id="header_mini">
-            <div class="block_book" onclick="predmeticlick();">
+            <div class="block_book" style="padding-top: 20px;" onclick="predmeticlick();">
             <img src="img/book.svg" alt="book">
             <p class="title_menu">Предметы</p>
             </div>
@@ -79,6 +79,16 @@
             <p class="title_menu">Домашняя работа</p>
             </div>
             <hr>
+            <div class="account_block">
+                <!--<p class="logo_user_text" id="logo_user_text_mini"></p>-->
+                <img src="img/user.svg" alt="user">
+                <p class="title_menu">Профиль</p>
+                <hr>
+                <div onclick="exit();">
+                <img src="img/exit.svg" alt="exit" class="logo_exit">
+                <p class="title_menu">Выход</p>
+                </div>
+            </div>
         </header>
         <div class="content">
             <div class="media_naz_block_mini">
@@ -190,9 +200,22 @@
                 <img src="img/logo-user.png" alt="logo-user" class="logo_block_img">
                 <input type="text" class="input logo_block_input" id="logo_block_input_login" placeholder="Логин">
                 <input type="text" class="input" id="logo_block_input_password" placeholder="Пароль">
-                <div class="butt butt_pk" style="text-align: center;" onclick="login_fun();">Вход pk</div>
-                <div class="butt butt_mini" style="text-align: center;" onclick="login_fun_mini();">Вход mini</div>
+                <div class="butt butt_pk" style="text-align: center;" onclick="login_fun();">Вход</div>
+                <div class="butt butt_mini" style="text-align: center;" onclick="login_fun_mini();">Вход</div>
+                <p class="reg_butt" onclick="click_reg();">Регестрация</p>
                 <p id="status_text_"></p>
+            </div>
+            <div class="registr_block" id="registr_block" style="display: none;">
+                <input type="text" class="input logo_block_input" id="logo_block_input_login_reg" placeholder="Логин">
+                <input type="text" class="input" id="logo_block_input_password_reg" placeholder="Пароль">
+                <input type="text" class="input" id="logo_block_input_email" placeholder="Почта">
+                <input type="text" class="input" id="logo_block_input_telegram" placeholder="Телеграм ID">
+                <input type="text" class="input" id="logo_block_input_name" placeholder="Имя">
+                <input type="text" class="input" id="logo_block_input_fname" placeholder="Фамилия">
+                <div class="butt butt_pk" style="text-align: center;" onclick="reg_fun();">Регистрация</div>
+                <div class="butt butt_mini" style="text-align: center;" onclick="reg_fun_mini();">Регистрация</div>
+                <p class="reg_butt" onclick="click_log();">Вход</p>
+                <p id="status_text_reg"></p>
             </div>
         </div>
     </div>
