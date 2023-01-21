@@ -1,7 +1,6 @@
 body {
     margin: 0px;
     padding: 0px;
-    background-color: #1E1E1E;
     font-family: 'Oswald', sans-serif;
     overflow: hidden;
 }
@@ -9,7 +8,6 @@ body {
     display: flex;
 }
 .header,.header_mini {
-    background: #282828;
     width: 87px;
     height: 100vh;
     background-position: bottom;
@@ -19,24 +17,20 @@ body {
 }
 .header_background {
     height: 100vh;
-    background-color: rgb(40 40 40 / 50%);
 }
 .logo_user {
     padding-top: 0px;
     border-radius: 50%;
 }
 .logo_user_text {
-    color: #fff;
     text-align: center;
-    background: #1E1E1E;
     border-radius: 50%;
     padding: 6px;
-    border: 2px solid #fff;
 }
 .logo_exit {
     padding-top: 20px;
 }
-.header img,.header_mini img {
+.header svg,.header_mini svg,.header img,.header_mini img {
     width: 32px;
     height: 32px;
     display: block;
@@ -56,7 +50,6 @@ body {
     /*border-right: 2px solid #E1E1E1;*/
     cursor: pointer;
     display: none;/*flex*/
-    color: #fff;
     align-items: center;
 }
 .naz_block_mini {
@@ -66,18 +59,16 @@ body {
     /*border-right: 2px solid #E1E1E1;*/
     cursor: pointer;
     display: none;/*flex*/
-    color: #fff;
     align-items: center;
     justify-content: center;
 }
-.naz_block img,.naz_block_mini img  {
+.naz_block svg,.naz_block_mini svg,.naz_block img,.naz_block_mini img  {
     width: 15px;
 }
 .naz_block p,.naz_block_mini p {
     margin-left: 10px;
 }
 .predmet-block-title {
-    color: #fff;
     text-align: center;
 }
 .predmet-block,.block_schedulespredmet,.block_classmates,.block_teachers,.block_homework {
@@ -92,10 +83,9 @@ body {
     height: 225px;
     border-radius: 10px;
     cursor: pointer;
-    border: 3px solid #191919;
     margin: 10px;
     background-size: cover;
-    background-position: unset;
+    background-position: center;
     background-repeat: no-repeat;
 }
 .block_navigator_ponel_center_end {
@@ -105,8 +95,6 @@ body {
     border-radius: 10px;
 }
 .block_navigator_ponel_text {
-    background: #282828;
-    color: #E1E1E1;
     margin: 0px;
     width: 101%;
     border-radius: 5px;
@@ -130,9 +118,7 @@ body {
 .block_navigator_schedules {
     width: 472px;
     border-radius: 10px;
-    border: 2px solid #E1E1E1;
     margin: 10px;
-    background: #202020;
 }
 .block_navigator_schedules_ponel_center_end {
     display: grid;
@@ -140,8 +126,6 @@ body {
     border-radius: 10px;
 }
 .block_navigator_ponel_text {
-    background: #282828;
-    color: #E1E1E1;
     margin: 0px;
     width: 101%;
     border-radius: 5px;
@@ -160,12 +144,10 @@ body {
     padding: 0px;
 }
 .block_navigator_ponel_text_predmet {
-    color: #E1E1E1;
     text-align: center;
 }
 .classmates_list_block {
     width: 277px;
-    border: 2px solid #E1E1E1;
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
@@ -180,14 +162,11 @@ body {
     margin-top: 20px; 
 }
 .classmates_list_block p {
-    color: #E1E1E1;
     text-align: center;
     margin-top: 50px;
 }
 table, th, td {
-    border: 1px solid #E1E1E1;
     border-collapse: collapse;
-    color: #E1E1E1;
   }
 table {
     width: 100%;
@@ -196,17 +175,14 @@ td {
     padding: 10px;
 }
 .title_menu {
-    color: #fff;
     text-align: center;
     font-size: 11px;
 }
-.block_book,.block_list,.block_people,.block_teacher,.block_homeworks {
+.block_book,.block_list,.block_people,.block_teacher,.block_homeworks,.block_settings {
     cursor: pointer;
 }
 .butt_ubd_p {
-    color: #191919;
     text-align: center;
-    background: #E1E1E1;
     width: 150px;
     height: 32px;
     margin: 0 auto;
@@ -214,20 +190,16 @@ td {
     border-radius: 10px;
 }
 .butt {
-    background: #191919;
     padding: 5px;
     border-radius: 10px;
-    color: #E1E1E1;
     margin: 0 auto;
     margin-top: 25px;
-    border: 2px solid #E1E1E1;
     cursor: pointer;
 }
 .block_ubd_schedulestitle_ {
     width: 50%;
 /*    height: 500px;**/
     position: fixed;
-    background: #191919;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -237,12 +209,9 @@ td {
     text-align: center;
     display: none;
     border-radius: 10px;
-    border: 2px solid #E1E1E1;
 }
 .block_ubd_schedulestitle_list {
     height: 36px;
-    background: #E1E1E1;
-    color: #191919;
     text-align: center;
     border-radius: 10px;
     display: flex;
@@ -266,14 +235,12 @@ td {
     height: 25px;
     margin-bottom: 20px;
     font-weight: bold;
-    color: #191919;
     border: none;
 }
 .block_bleck_ {
     left: 0px;
     top: 0px;
     position: fixed;
-    background: #000;
     width: 100%;
     height: 100%;
     opacity: 0.5;
@@ -289,7 +256,6 @@ td {
     margin-bottom: 150px;
 }
 .navigat_predmet_ponel {
-    color: #E1E1E1;
     text-align: center;
 }
 .navigat_predmet_ponel_block {
@@ -301,7 +267,6 @@ td {
 .navigat_predmet_ponel_block_o1 {
     width: 250px;
     height: 225px;
-    border: 2px solid #E1E1E1;
     border-radius: 10px;
     background-image: url(img/o1.svg);
     background-repeat: no-repeat;
@@ -317,7 +282,6 @@ td {
 .navigat_predmet_ponel_block_o2 {
     width: 250px;
     height: 225px;
-    border: 2px solid #E1E1E1;
     border-radius: 10px;
     background-image: url(img/o2.svg);
     background-repeat: no-repeat;
@@ -333,7 +297,6 @@ td {
 .navigat_predmet_ponel_block_o3 {
     width: 250px;
     height: 225px;
-    border: 2px solid #E1E1E1;
     border-radius: 10px;
     background-image: url(img/o3.svg);
     background-repeat: no-repeat;
@@ -350,7 +313,6 @@ td {
     width: 50%;
 /*    height: 500px;**/
     position: fixed;
-    background: #191919;
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -360,17 +322,13 @@ td {
     text-align: center;
     display: none;
     border-radius: 10px;
-    border: 2px solid #E1E1E1;
 }
 .block_pridmet_text {
     font-family: 'Oswald', sans-serif;
     text-align: center;
-    color: #E1E1E1;
 }
 .butt_ubd_p {
-    color: #191919;
     text-align: center;
-    background: #E1E1E1;
     width: 150px;
     height: 32px;
     margin: 0 auto;
@@ -387,16 +345,13 @@ td {
     height: 200px;
     border-radius: 10px;
     margin: 0 auto;
-    background-color: rgb(40 40 40);
     margin-bottom: 20px;
 }
 .block_itog_o_content h2 {
-    color: #fff;
     text-align: center;
     padding-top: 32px;
 }
 .block_itog_o_content h1 {
-    color: #fff;
     text-align: center;
 }
 .account_block {
@@ -420,7 +375,6 @@ td {
     border-radius: 50%;
     display: flex;
     margin: 0 auto;
-    border: 2px solid #fff;
 }
 .logo_block_input {
     display: block;
@@ -432,8 +386,20 @@ td {
 }
 .reg_butt {
     text-align: center;
-    color: #fff;
     cursor: pointer;
+}
+.settings_block_eliment {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+}
+.settings_block_eliment h3 {
+    margin-right: 15px;
+}
+.settings_block_eliment select {
+    width: 200px;
+    margin-bottom: 0px;
 }
 @media (max-width: 515px) {
     .header {

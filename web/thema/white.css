@@ -1,0 +1,93 @@
+body {
+    background-color: #fff;
+}
+.header_background {
+    background-color: rgb(204 204 204 / 50%);
+}
+.logo_user_text {
+    color: #000;
+    background: #fff;
+    border: 2px solid #000;
+}
+.naz_block,.naz_block_mini,.predmet-block-title,.block_navigator_ponel_text_predmet,.title_menu,.block_itog_o_content,.block_itog_o_content h1,.reg_butt,.settings_block_eliment {
+    color: #000;
+}
+.block_navigator {
+    border: 3px solid rgb(204 204 204);
+}
+.block_navigator_ponel_text {
+    background: #282828;
+    color: #000;
+}
+.block_navigator_schedules {
+    border: 2px solid #000;
+    background: rgb(204 204 204);
+}
+.block_navigator_ponel_text {
+    background: rgb(204 204 204);
+    color: #000;
+}
+.classmates_list_block {
+    border: 2px solid #000;
+    background: rgb(204 204 204);
+}
+.classmates_list_block p {
+    color: #000;
+}
+table, th, td {
+    border: 1px solid #000;
+    color: #000;
+}
+.butt_ubd_p {
+    color: #000;
+    background: rgb(204 204 204);;
+}
+.butt {
+    background: rgb(204 204 204);
+    color: #000;
+    border: 2px solid #000;
+}
+.block_ubd_schedulestitle_ {
+    background: #191919;
+    border: 2px solid #000;
+}
+.block_ubd_schedulestitle_list {
+    background: rgb(204 204 204);
+    color: #000;
+}
+.input {
+    background-color: #000;
+    color: #fff;
+}
+.block_bleck_ {
+    background: #000;
+}
+.navigat_predmet_ponel,.block_pridmet_text {
+    color: #000;
+}
+.navigat_predmet_ponel_block_o1,.navigat_predmet_ponel_block_o2,.navigat_predmet_ponel_block_o3 {
+    border: 2px solid #000;
+}
+.block_ubd_schedulestitle_ {
+    background: rgb(204 204 204);
+    border: 2px solid #fff;
+}
+.block_itog_o_content {
+    border: 2px solid #000;
+    color: #000;
+}
+.logo_block_img {
+    border: 2px solid #000;
+}
+.color_img_header {
+    fill: #000;
+}
+.butt_ubd_p_homework {
+    color: #000;
+    background: rgb(204 204 204);
+    text-align: center;
+    cursor: pointer;
+}
+.header_mini {
+    background: rgb(204 204 204);
+}

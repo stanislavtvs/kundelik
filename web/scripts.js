@@ -2,6 +2,7 @@ login = localStorage.getItem('login')
 password = localStorage.getItem('password')
 namef = localStorage.getItem('namef')
 name = localStorage.getItem('name')
+thema = localStorage.getItem('thema')
 
 function allcloseblock() {
     document.getElementById("header_mini").style.display = "none";
@@ -16,8 +17,20 @@ function allcloseblock() {
     document.getElementById("homework_block_predmet").style.display = "none";
     document.getElementById("itog_evel_table").style.display = "none";
     document.getElementById("evel_evel_table").style.display = "none";
+    document.getElementById("settings_block").style.display = "none";
     document.getElementById("header").setAttribute("style","");
 }
+if (thema == "black") {
+    document.getElementById("thema").innerHTML = ""
+    document.getElementById("thema").innerHTML = "<link rel='stylesheet' href='thema/black.css'>"
+    document.getElementById("thema_selenium").innerHTML = "<option value='black'>Тёмная</option><option value='white'>Светлая</option>";
+}
+else if (thema == "white") {
+    document.getElementById("thema").innerHTML = ""
+    document.getElementById("thema").innerHTML = "<link rel='stylesheet' href='thema/white.css'>"
+    document.getElementById("thema_selenium").innerHTML = "<option value='white'>Светлая</option><option value='black'>Тёмная</option>"
+}
+
 
 var widthvar = window.innerWidth
 
@@ -106,6 +119,7 @@ function login_fun_js(text) {
         if (text[index]['cod'] == "good") {
         //document.getElementById("status_text_").innerHTML = ""
         localStorage.setItem('login', text[index]['name']);
+        localStorage.setItem('thema', 'black');
 //        localStorage.setItem('password', text[index]['password']);
         var name = text[index]['namef'].split(" ")
         var p1 = name[0].substring(0, 1)
@@ -135,6 +149,7 @@ function reg_fun_js(text) {
         if (text[index]['cod'] == "good") {
         //document.getElementById("status_text_").innerHTML = ""
         localStorage.setItem('login', text[index]['name']);
+        localStorage.setItem('thema', 'black');
         console.log(text[index]['name'])
 //        localStorage.setItem('password', text[index]['password']);
         var name = text[index]['namef'].split(" ")
@@ -166,6 +181,7 @@ function login_fun_mini_js(text) {
         if (text[index]['cod'] == "good") {
         //document.getElementById("status_text_").innerHTML = ""
         localStorage.setItem('login', text[index]['name']);
+        localStorage.setItem('thema', 'black');
 //        localStorage.setItem('password', text[index]['password']);
         var name = text[index]['namef'].split(" ")
         var p1 = name[0].substring(0, 1)
@@ -196,6 +212,7 @@ function reg_fun_mini_js(text) {
         if (text[index]['cod'] == "good") {
         //document.getElementById("status_text_").innerHTML = ""
         localStorage.setItem('login', text[index]['name']);
+        localStorage.setItem('thema', 'black');
 //        localStorage.setItem('password', text[index]['password']);
         var name = text[index]['namef'].split(" ")
         var p1 = name[0].substring(0, 1)
@@ -282,6 +299,12 @@ function Homework() {
     login = localStorage.getItem('login')
     detecthomework(login);
 }
+function settings() {
+    allcloseblock(); 
+    document.getElementById("settings_block").style.display = "block";
+    //login = localStorage.getItem('login')
+    //detecthomework(login);
+}
 async function butt_classmates_click_py() {
     document.getElementById("butt_classmates_click_py").innerHTML = "Загрузка...";
     login = localStorage.getItem('login')
@@ -336,6 +359,9 @@ function detectpredmetout(text) {
     for (let index = 0; index < text.length; index++) {
         var element = text[index]['title'];
         var elementimg = text[index]['title'].replace(/ /g,'');
+        if (elementimg == "Казахскийязык(Т2)") {
+            elementimg = "Казахскийязык";
+        }
         if (index+1 == text.length) {
             block = '<div class="block_navigator mini_navigator" style="background-image: url(img/pimg/'+elementimg+'.jpg);" img="img/pimg/'+elementimg+'.jpg" title="'+element+'" idpost="'+text[index]['id']+'" onclick="predmet_ponel_click(this)"><div class="block_navigator_ponel_center_end"><p class="block_navigator_ponel_text">'+element+'</p></div></div>'
             document.getElementById("block_predmet_content").innerHTML += block;
@@ -405,11 +431,11 @@ function detecthomework_js(text) {
     for (let index = 0; index < text.length; index++) {
         if (text[index]['status'] == "True") {
             status = "Выполнено"
-            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='delethomework_click("+text[index]['id']+")'>Удалить</td><td></td></tr>";
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td class='butt_ubd_p_homework' style='border-radius: 0px;border-right: 1px solid #000' onclick='delethomework_click("+text[index]['id']+")'>Удалить</td><td></td></tr>";
         }
         else if (text[index]['status'] == "False") {
             status = "Не выполнено"
-            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='goodhomework_click("+text[index]['id']+")'>Выполнить</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='delethomework_click("+text[index]['id']+")'>Удалить</td></tr>";
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td class='butt_ubd_p_homework' style='border-radius: 0px;border-right: 1px solid #000' onclick='goodhomework_click("+text[index]['id']+")'>Выполнить</td><td class='butt_ubd_p_homework' style='border-radius: 0px;border-right: 1px solid #000' onclick='delethomework_click("+text[index]['id']+")'>Удалить</td></tr>";
         }
         document.getElementById("table_homework").innerHTML += textp;
         //console.log(text[index])
@@ -618,11 +644,11 @@ function homework_o_click_js(text) {
     for (let index = 0; index < text.length; index++) {
         if (text[index]['status'] == "True") {
             status = "Выполнено"
-            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='fdelethomework_click(this)' id='"+text[index]['id']+"' idpredmet='"+text[index]['itemsid']+"'>Удалить</td><td></td></tr>";
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td class='butt_ubd_p_homework' style='border-radius: 0px;' onclick='fdelethomework_click(this)' id='"+text[index]['id']+"' idpredmet='"+text[index]['itemsid']+"'>Удалить</td><td></td></tr>";
         }
         else if (text[index]['status'] == "False") {
             status = "Не выполнено"
-            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='fgoodhomework_click("+text[index]['id']+")'>Выполнить</td><td style='text-align: center;background: #1E1E1E;cursor: pointer;' onclick='fdelethomework_click(this)' id='"+text[index]['id']+"' idpredmet='"+text[index]['itemsid']+"'>Удалить</td></tr>";
+            textp = "<tr><td>"+text[index]['data']+"</td><td>"+text[index]['text']+"</td><td>"+text[index]['items']+"</td><td>"+status+"</td><td class='butt_ubd_p_homework' style='border-radius: 0px;border-right: 1px solid #000' onclick='fgoodhomework_click("+text[index]['id']+")'>Выполнить</td><td class='butt_ubd_p_homework' style='border-radius: 0px;' onclick='fdelethomework_click(this)' id='"+text[index]['id']+"' idpredmet='"+text[index]['itemsid']+"'>Удалить</td></tr>";
         }
         document.getElementById("table_homework_predmet").innerHTML += textp;
         //console.log(text[index])
@@ -740,4 +766,13 @@ function click_reg() {
 function click_log() {
     document.getElementById("logo_block").style.display = "block";
     document.getElementById("registr_block").style.display = "none";   
+}
+function settings_save() {
+    thema = document.getElementById("thema_selenium").value;
+    langue = document.getElementById("langue").value;
+
+    if (thema != "") {
+        localStorage.setItem('thema', thema);
+        document.getElementById("thema").innerHTML = "<link rel='stylesheet' href='thema/"+thema+".css'>"
+    }
 }

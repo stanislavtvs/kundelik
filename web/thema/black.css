@@ -1,0 +1,89 @@
+body {
+    background-color: #1E1E1E;
+}
+.header_background {
+    background-color: rgb(40 40 40 / 50%);
+}
+.logo_user_text {
+    color: #fff;
+    background: #1E1E1E;
+    border: 2px solid #fff;
+}
+.naz_block,.naz_block_mini,.predmet-block-title,.block_navigator_ponel_text_predmet,.title_menu,.block_itog_o_content,.block_itog_o_content h1,.reg_butt,.settings_block_eliment {
+    color: #fff;
+}
+.block_navigator {
+    border: 3px solid #191919;
+}
+.block_navigator_ponel_text {
+    background: #282828;
+    color: #E1E1E1;
+}
+.block_navigator_schedules {
+    border: 2px solid #E1E1E1;
+    background: #202020;
+}
+.block_navigator_ponel_text {
+    background: #282828;
+    color: #E1E1E1;
+}
+.classmates_list_block {
+    border: 2px solid #E1E1E1;
+}
+.classmates_list_block p {
+    color: #E1E1E1;
+}
+table, th, td {
+    border: 1px solid #E1E1E1;
+    color: #E1E1E1;
+}
+.butt_ubd_p {
+    color: #191919;
+    background: #E1E1E1;
+}
+.butt {
+    background: #191919;
+    color: #E1E1E1;
+    border: 2px solid #E1E1E1;
+}
+.block_ubd_schedulestitle_ {
+    background: #191919;
+    border: 2px solid #E1E1E1;
+}
+.block_ubd_schedulestitle_list {
+    background: #E1E1E1;
+    color: #191919;
+}
+.input {
+    color: #191919;
+}
+.block_bleck_ {
+    background: #000;
+}
+.navigat_predmet_ponel,.block_pridmet_text {
+    color: #E1E1E1;
+}
+.navigat_predmet_ponel_block_o1,.navigat_predmet_ponel_block_o2,.navigat_predmet_ponel_block_o3 {
+    border: 2px solid #E1E1E1;
+}
+.block_ubd_schedulestitle_ {
+    background: #191919;
+    border: 2px solid #E1E1E1;
+}
+.block_itog_o_content {
+    background-color: rgb(40 40 40);
+}
+.logo_block_img {
+    border: 2px solid #fff;
+}
+.color_img_header {
+    fill: #fff;
+}
+.butt_ubd_p_homework {
+    background: #191919;
+    text-align: center;
+    cursor: pointer;
+}
+.header_mini {
+    background: #191919;
+}
